@@ -19,6 +19,8 @@ const services = [
     tag: "Sistema A",
     title: "Lead Qualification System",
     tagline: "Filtra automáticamente quién vale tu tiempo.",
+    timeline: "2–3 semanas",
+    forWho: "Clínicas, academias, consultoras, agencias. Cualquier negocio con 10+ leads/mes.",
     problem:
       "Recibes leads pero no sabes cuáles son buenos hasta que pierdes tiempo hablando con ellos. El equipo hace seguimiento manual y aun así los leads se enfrían sin convertir.",
     deliverables: [
@@ -35,13 +37,15 @@ const services = [
       "Sabes exactamente en qué etapa está cada oportunidad",
       "El sistema trabaja sin supervisión constante",
     ],
-    forWho: "Clínicas, academias, consultoras, agencias. Cualquier negocio con 10+ leads/mes.",
+    result: "−40% tiempo en llamadas que no convierten",
   },
   {
     slug: "proposal-automation",
     tag: "Sistema B",
     title: "Proposal Automation System",
     tagline: "Propuestas en minutos, no en días.",
+    timeline: "3–4 semanas",
+    forWho: "Agencias, freelances, empresas de servicios. Cualquiera que envíe más de 5 propuestas al mes.",
     problem:
       "Crear propuestas a mano es lento, inconsistente y hace que pierdas momentum con el cliente. Para cuando la envías, ya está frío o ya eligió a la competencia.",
     deliverables: [
@@ -58,13 +62,15 @@ const services = [
       "Seguimiento automático sin perseguir al cliente",
       "Mides exactamente cuántas propuestas se convierten",
     ],
-    forWho: "Agencias, freelances, empresas de servicios. Cualquiera que envíe más de 5 propuestas al mes.",
+    result: "De 1–3 días a 8 minutos por propuesta",
   },
   {
     slug: "whatsapp-crm-automation",
     tag: "Sistema C",
     title: "WhatsApp + CRM Automation",
     tagline: "Seguimiento automático que no suena a robot.",
+    timeline: "2–3 semanas",
+    forWho: "Clínicas, formación, eventos, retail premium. Negocios donde WhatsApp es canal principal de captación.",
     problem:
       "WhatsApp es tu canal principal pero es un caos: mensajes sin respuesta, sin historial, sin sistema. Leads que llegan y nadie atiende, o que se atienden de forma inconsistente.",
     deliverables: [
@@ -81,7 +87,7 @@ const services = [
       "Historial de cada lead en un solo lugar",
       "Nunca más un lead sin seguimiento",
     ],
-    forWho: "Clínicas, formación, eventos, retail premium. Negocios donde WhatsApp es canal principal de captación.",
+    result: "0 leads sin respuesta en las primeras 24h",
   },
 ];
 
@@ -122,19 +128,29 @@ export default function ServiciosPage() {
           Cada sistema resuelve una parte del proceso comercial. Pueden implementarse juntos o por separado.
         </p>
 
-        <div className="flex flex-col gap-20">
+        <div className="flex flex-col gap-24">
           {services.map((s) => (
             <div key={s.slug} id={s.slug} className="border-t border-border pt-12">
-              <div className="flex items-start gap-4 mb-8">
-                <span className="text-xs font-mono text-accent border border-accent/30 rounded px-2 py-0.5 shrink-0 mt-1">
-                  {s.tag}
-                </span>
-                <div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-foreground">{s.title}</h2>
-                  <p className="text-foreground-muted mt-1">{s.tagline}</p>
+
+              {/* Header */}
+              <div className="flex flex-wrap items-start justify-between gap-4 mb-8">
+                <div className="flex items-start gap-4">
+                  <span className="text-xs font-mono text-accent border border-accent/30 rounded px-2 py-0.5 shrink-0 mt-1">
+                    {s.tag}
+                  </span>
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-foreground">{s.title}</h2>
+                    <p className="text-foreground-muted mt-1">{s.tagline}</p>
+                  </div>
+                </div>
+                {/* Timeline badge */}
+                <div className="flex items-center gap-1.5 bg-surface border border-border rounded-full px-4 py-1.5 shrink-0">
+                  <span className="text-xs text-muted">Entrega:</span>
+                  <span className="text-xs font-semibold text-foreground">{s.timeline}</span>
                 </div>
               </div>
 
+              {/* Problem + for who */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
                   <p className="text-xs text-muted uppercase tracking-wider mb-3">El problema</p>
@@ -146,7 +162,8 @@ export default function ServiciosPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              {/* Deliverables + Benefits */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div className="bg-surface border border-border rounded-xl p-6">
                   <p className="text-xs text-muted uppercase tracking-wider mb-4">Entregables</p>
                   <ul className="flex flex-col gap-2">
@@ -171,9 +188,16 @@ export default function ServiciosPage() {
                 </div>
               </div>
 
-              <Link href="/diagnostico" className="btn-primary">
-                Solicita tu diagnóstico →
-              </Link>
+              {/* Result callout */}
+              <div className="flex flex-wrap items-center justify-between gap-4 bg-accent/5 border border-accent/20 rounded-xl px-6 py-4 mb-6">
+                <div>
+                  <p className="text-xs text-muted uppercase tracking-wider mb-0.5">Resultado habitual</p>
+                  <p className="font-semibold text-accent">{s.result}</p>
+                </div>
+                <Link href="/diagnostico" className="btn-primary shrink-0">
+                  Solicita tu diagnóstico →
+                </Link>
+              </div>
             </div>
           ))}
         </div>

@@ -18,6 +18,11 @@ const cases = [
     client: "Clinica capilar",
     sector: "Salud · Madrid",
     system: "Lead Qualification System",
+    tag: "Lead Qualification",
+    before: "2–3 días de espera · 60% de llamadas sin conversion",
+    after: "−40% tiempo en llamadas · solo leads precualificados",
+    metric: "−40%",
+    metricLabel: "tiempo en llamadas iniciales",
     challenge:
       "El equipo de captacion atendia llamadas de personas que claramente no eran candidatos: presupuesto incompatible, expectativas irreales o zona geografica fuera de cobertura. Cada llamada malgastada era tiempo perdido en leads que podrian haber filtrado solos.",
     solution: [
@@ -27,13 +32,17 @@ const cases = [
       "Email y WhatsApp automaticos segun puntuacion del lead",
       "Notificacion prioritaria al equipo cuando llega lead calificado",
     ],
-    result: "40% menos tiempo en llamadas iniciales. El equipo ahora solo habla con leads que ya pasaron el primer filtro.",
-    tag: "Lead Qualification",
+    result: "El equipo ahora solo habla con leads que ya pasaron el primer filtro automatico.",
   },
   {
     client: "Empresa de eventos",
     sector: "Eventos · Barcelona",
     system: "Proposal Automation System",
+    tag: "Proposal Automation",
+    before: "1–3 días por propuesta · perdida de clientes ante competidores",
+    after: "8 minutos por propuesta · imagen profesional consistente",
+    metric: "8 min",
+    metricLabel: "de peticion a propuesta enviada",
     challenge:
       "Las peticiones de presupuesto tardaban entre 1 y 3 dias en responderse. En ese tiempo, el potencial cliente ya habia pedido presupuesto a 3 competidores y la decision estaba practicamente tomada.",
     solution: [
@@ -43,13 +52,17 @@ const cases = [
       "Pipeline de seguimiento: apertura de email, clicks, seguimiento si no hay respuesta",
       "Integracion completa con Go High Level",
     ],
-    result: "Propuesta generada en 8 minutos desde que llega la peticion. Imagen profesional consistente en cada envio.",
-    tag: "Proposal Automation",
+    result: "Propuesta generada en 8 minutos desde que llega la peticion. El cliente la recibe antes de que haya podido contactar a la competencia.",
   },
   {
     client: "Academia de formacion online",
     sector: "Formacion · Internacional",
     system: "WhatsApp + CRM Automation",
+    tag: "WhatsApp + CRM",
+    before: "Leads sin respuesta en 24h · tasa de respuesta email < 20%",
+    after: "0 leads sin respuesta · respuesta WhatsApp en segundos",
+    metric: "0",
+    metricLabel: "leads sin respuesta en 24h",
     challenge:
       "Muchos interesados llegaban desde anuncios y redes sociales, pero el porcentaje de conversion era muy bajo. La mayoria no respondia emails y se perdia el lead sin que nadie hiciera seguimiento.",
     solution: [
@@ -59,8 +72,7 @@ const cases = [
       "WhatsApp de reactivacion al dia 3 si no habia apertura de email",
       "Pipeline claro: Lead → Nurture → Llamada → Matriculado",
     ],
-    result: "0 leads sin respuesta en las primeras 24h. Tasa de respuesta en WhatsApp muy superior a email.",
-    tag: "WhatsApp + CRM",
+    result: "Todos los leads reciben respuesta automatica en los primeros 5 minutos. Tasa de respuesta en WhatsApp muy superior al email.",
   },
 ];
 
@@ -78,19 +90,40 @@ export default function CasosPage() {
           Sin mockups, sin demos. Negocios reales con procesos que antes dependian de personas y ahora funcionan solos.
         </p>
 
-        <div className="flex flex-col gap-16">
+        <div className="flex flex-col gap-20">
           {cases.map((c, i) => (
             <div key={i} className="border-t border-border pt-12">
-              <div className="flex items-start justify-between mb-6">
+
+              {/* Header */}
+              <div className="flex items-start justify-between mb-6 gap-4 flex-wrap">
                 <div>
                   <h2 className="text-2xl font-bold text-foreground">{c.client}</h2>
-                  <p className="text-sm text-muted">{c.sector}</p>
+                  <p className="text-sm text-muted mt-0.5">{c.sector}</p>
                 </div>
                 <span className="text-xs font-mono text-accent border border-accent/30 rounded px-2 py-0.5 shrink-0">
                   {c.tag}
                 </span>
               </div>
 
+              {/* Before / After strip */}
+              <div className="grid grid-cols-2 gap-3 mb-8">
+                <div className="bg-red-950/20 border border-red-900/30 rounded-xl p-4">
+                  <p className="text-xs text-red-400/70 uppercase tracking-wider mb-2">Antes</p>
+                  <p className="text-sm text-red-300/80 leading-snug">{c.before}</p>
+                </div>
+                <div className="bg-emerald-950/20 border border-emerald-900/30 rounded-xl p-4">
+                  <p className="text-xs text-emerald-400/70 uppercase tracking-wider mb-2">Ahora</p>
+                  <p className="text-sm text-emerald-300/80 leading-snug">{c.after}</p>
+                </div>
+              </div>
+
+              {/* Metric */}
+              <div className="flex items-end gap-3 mb-8">
+                <span className="text-6xl font-bold text-accent leading-none">{c.metric}</span>
+                <span className="text-sm text-muted mb-2">{c.metricLabel}</span>
+              </div>
+
+              {/* Challenge + Solution */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <p className="text-xs text-muted uppercase tracking-wider mb-3">El reto</p>
@@ -109,7 +142,7 @@ export default function CasosPage() {
                 </div>
               </div>
 
-              <div className="mt-6 bg-accent/10 border border-accent/20 rounded-lg p-4">
+              <div className="mt-6 bg-accent/8 border border-accent/20 rounded-lg p-4">
                 <p className="text-xs text-muted uppercase tracking-wider mb-1">Resultado</p>
                 <p className="text-sm text-accent font-medium">{c.result}</p>
               </div>
@@ -122,7 +155,7 @@ export default function CasosPage() {
             ¿Tu negocio podria ser el proximo caso?
           </h2>
           <p className="text-foreground-muted mb-6 max-w-md mx-auto">
-            Empieza por el diagnostico. En 30 minutos te digo que sistema necesitas.
+            Empieza por el diagnostico. En 30 minutos te digo que sistema necesitas y si tiene sentido implementarlo.
           </p>
           <Link href="/diagnostico" className="btn-primary">
             Solicita tu diagnostico gratuito →
