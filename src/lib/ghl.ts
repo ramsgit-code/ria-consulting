@@ -5,6 +5,26 @@ const GHL_API_KEY = process.env.GHL_API_KEY!;
 const GHL_LOCATION_ID = process.env.GHL_LOCATION_ID!;
 const GHL_BASE_URL = "https://services.leadconnectorhq.com";
 
+// ─── Opportunity custom field IDs (created once, stable forever) ──────────────
+const OPP_FIELDS = {
+  sector:             "ILDbsVEh6od6MJVII6oW",
+  tipo_negocio:       "A2UjVb5Kt7HhGcwhCIHW",
+  tamano_equipo:      "MVzlQ8W1TZQ2ksXMvVtp",
+  volumen_leads:      "zoxT5vU9qQmpKOVXEfV7",
+  crm_actual:         "spOahcIeVsvlqtG96tfC",
+  usa_whatsapp:       "8KG5VT0jhrY6JYUHpGys",
+  tiempo_propuesta:   "w6ejaMdnWvV7Yz03HAFO",
+  problema_principal: "79KsdRBBvQjVBSjr6lj2",
+  objetivos:          "Rnfk0yksNzmWdAEVDLfx",
+  urgencia:           "BkqOkyDhjvKFs7NQ0FL7",
+  presupuesto:        "cUKhFWVjHjLzFkGDq8l5",
+  pais:               "72EfbndFsWh6EIUB5VGe",
+  como_conociste:     "fbPfyHZH4dmRmSvana5P",
+  notas:              "Po2l4Wy3YHbiIGJXgill",
+  lead_score:         "fNL28BSYx01ywetdxnNu",
+  lead_tier:          "j94ZI6j12pGLi2EGwKJY",
+};
+
 export interface GHLContactPayload {
   firstName: string;
   lastName?: string;
@@ -20,8 +40,8 @@ export interface GHLOpportunityPayload {
   pipelineId: string;
   pipelineStageId: string;
   contactId: string;
-  monetaryValue?: number;
   status: "open" | "won" | "lost" | "abandoned";
+  customFields?: { id: string; field_value: string }[];
 }
 
 async function ghlFetch(path: string, options: RequestInit) {
@@ -48,6 +68,7 @@ async function ghlFetch(path: string, options: RequestInit) {
   return JSON.parse(body);
 }
 
+// Contact: only basic fields — name, email, phone, website, source, tags
 export async function createOrUpdateContact(payload: GHLContactPayload) {
   return ghlFetch("/contacts/", {
     method: "POST",
@@ -58,6 +79,7 @@ export async function createOrUpdateContact(payload: GHLContactPayload) {
   });
 }
 
+// Opportunity: includes all form fields as custom fields
 export async function createOpportunity(payload: GHLOpportunityPayload) {
   return ghlFetch("/opportunities/", {
     method: "POST",
@@ -68,59 +90,30 @@ export async function createOpportunity(payload: GHLOpportunityPayload) {
   });
 }
 
-export async function addNoteToContact(contactId: string, body: string) {
-  return ghlFetch(`/contacts/${contactId}/notes`, {
-    method: "POST",
-    body: JSON.stringify({ body }),
-  });
-}
+// Builds the customFields array for the opportunity from form data
+export function buildOpportunityFields(
+  data: Record<string, unknown>,
+  score: number,
+  tier: string
+): { id: string; field_value: string }[] {
+  const str = (v: unknown) => String(v ?? "").trim();
 
-// Formats ALL form fields into a readable note visible inside the GHL contact/opportunity
-export function buildFormNote(data: Record<string, unknown>, score: number, tier: string): string {
-  const lines: string[] = [
-    `DIAGNOSTICO COMERCIAL — ${data.nombre} | ${data.empresa}`,
-    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
-    "",
-    "NEGOCIO",
-    `• Nombre:   ${data.nombre}`,
-    `• Empresa:  ${data.empresa}`,
-    `• País:     ${data.pais}`,
-    data.web ? `• Web:      ${data.web}` : "",
-    "",
-    "MERCADO",
-    `• Sector:         ${data.sector}`,
-    `• Tipo negocio:   ${data.tipo_negocio}`,
-    `• Tamaño equipo:  ${data.tamano_equipo}`,
-    `• Leads/mes:      ${data.volumen_leads}`,
-    "",
-    "SITUACIÓN ACTUAL",
-    `• CRM actual:          ${data.crm_actual}`,
-    `• WhatsApp en ventas:  ${data.usa_whatsapp}`,
-    `• Tiempo propuesta:    ${data.tiempo_propuesta}`,
-    "",
-    "PROBLEMA PRINCIPAL",
-    `${data.problema_principal}`,
-    "",
-    "OBJETIVOS",
-    Array.isArray(data.objetivo)
-      ? data.objetivo.map((o: string) => `• ${o}`).join("\n")
-      : `• ${data.objetivo}`,
-    "",
-    "PRESUPUESTO Y URGENCIA",
-    `• Presupuesto:  ${data.presupuesto}`,
-    `• Urgencia:     ${data.urgencia}`,
-    "",
-    "LEAD SCORING",
-    `• Score:  ${score}/100`,
-    `• Tier:   ${tier.toUpperCase()}`,
-    `• Fuente: ${data.como_conociste}`,
-    "",
-    data.notas
-      ? `NOTAS ADICIONALES\n${data.notas}\n`
-      : "",
-    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
-    `Enviado: ${new Date().toLocaleString("es-ES", { timeZone: "Europe/Madrid" })}`,
-  ];
-
-  return lines.filter((l) => l !== "").join("\n");
+  return [
+    { id: OPP_FIELDS.sector,             field_value: str(data.sector) },
+    { id: OPP_FIELDS.tipo_negocio,       field_value: str(data.tipo_negocio) },
+    { id: OPP_FIELDS.tamano_equipo,      field_value: str(data.tamano_equipo) },
+    { id: OPP_FIELDS.volumen_leads,      field_value: str(data.volumen_leads) },
+    { id: OPP_FIELDS.crm_actual,         field_value: str(data.crm_actual) },
+    { id: OPP_FIELDS.usa_whatsapp,       field_value: str(data.usa_whatsapp) },
+    { id: OPP_FIELDS.tiempo_propuesta,   field_value: str(data.tiempo_propuesta) },
+    { id: OPP_FIELDS.problema_principal, field_value: str(data.problema_principal) },
+    { id: OPP_FIELDS.objetivos,          field_value: Array.isArray(data.objetivo) ? (data.objetivo as string[]).join(", ") : str(data.objetivo) },
+    { id: OPP_FIELDS.urgencia,           field_value: str(data.urgencia) },
+    { id: OPP_FIELDS.presupuesto,        field_value: str(data.presupuesto) },
+    { id: OPP_FIELDS.pais,               field_value: str(data.pais) },
+    { id: OPP_FIELDS.como_conociste,     field_value: str(data.como_conociste) },
+    { id: OPP_FIELDS.notas,              field_value: str(data.notas) },
+    { id: OPP_FIELDS.lead_score,         field_value: String(score) },
+    { id: OPP_FIELDS.lead_tier,          field_value: tier.toUpperCase() },
+  ].filter((f) => f.field_value !== "");
 }
