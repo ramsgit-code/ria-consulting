@@ -68,15 +68,34 @@ async function ghlFetch(path: string, options: RequestInit) {
   return JSON.parse(body);
 }
 
-// Contact: only basic fields — name, email, phone, website, source, tags
+// Contact: creates or returns existing if email already in GHL
 export async function createOrUpdateContact(payload: GHLContactPayload) {
-  return ghlFetch("/contacts/", {
+  if (!GHL_API_KEY || !GHL_LOCATION_ID) {
+    throw new Error("GHL env vars missing: GHL_API_KEY or GHL_LOCATION_ID not set");
+  }
+
+  const res = await fetch(`${GHL_BASE_URL}/contacts/`, {
     method: "POST",
-    body: JSON.stringify({
-      locationId: GHL_LOCATION_ID,
-      ...payload,
-    }),
+    headers: {
+      Authorization: `Bearer ${GHL_API_KEY}`,
+      "Content-Type": "application/json",
+      Version: "2021-07-28",
+    },
+    body: JSON.stringify({ locationId: GHL_LOCATION_ID, ...payload }),
   });
+
+  const body = await res.text();
+  const json = JSON.parse(body);
+
+  // GHL returns 400 when the contact already exists — extract the existing ID
+  if (!res.ok) {
+    if (res.status === 400 && json?.meta?.contactId) {
+      return { contact: { id: json.meta.contactId } };
+    }
+    throw new Error(`GHL ${res.status} /contacts/: ${body}`);
+  }
+
+  return json;
 }
 
 // Opportunity: includes all form fields as custom fields
