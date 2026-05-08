@@ -8,7 +8,7 @@ import { m, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowLeft, CheckCircle, Loader2 } from "lucide-react";
 import Link from "next/link";
 
-// ─── Schema ──────────────────────────────────────────────────────────────────
+// ─── Schema ───────────────────────────────────────────────────────────────────────────────
 
 const schema = z.object({
   // Paso 1
@@ -39,7 +39,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-// ─── Step config ─────────────────────────────────────────────────────────────
+// ─── Step config ───────────────────────────────────────────────────────────────────────────────
 
 const TOTAL_STEPS = 5;
 
@@ -51,7 +51,7 @@ const stepTitles = [
   "Datos de contacto",
 ];
 
-// ─── Field components ─────────────────────────────────────────────────────────
+// ─── Field components ──────────────────────────────────────────────────────────────────────────
 
 function Field({
   label,
@@ -77,7 +77,7 @@ const inputClass =
 const selectClass =
   "bg-background border border-border rounded-lg px-4 py-2.5 text-sm text-foreground focus:outline-none focus:border-accent transition-colors appearance-none";
 
-// ─── Main component ───────────────────────────────────────────────────────────
+// ─── Main component ───────────────────────────────────────────────────────────────────────────
 
 export function DiagnosticForm() {
   const [step, setStep] = useState(1);
@@ -153,7 +153,7 @@ export function DiagnosticForm() {
           directamente en mi calendario.
         </p>
         <a
-          href={process.env.NEXT_PUBLIC_CALENDAR_URL || "#"}
+          href="https://api.leadconnectorhq.com/widget/booking/oBa8mgNeR49XOsAYvAX5"
           target="_blank"
           rel="noopener noreferrer"
           className="btn-primary text-base px-8 py-3"
