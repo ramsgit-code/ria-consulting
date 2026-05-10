@@ -9,132 +9,144 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Casos Reales — Resultados de Automatización Comercial",
     description:
-      "Hospital Capilar, Eventos Barcelona y más. Resultados concretos con sistemas de lead qualification, proposal automation y WhatsApp + CRM.",
+      "Resultados concretos con sistemas de lead qualification, proposal automation y WhatsApp + CRM.",
+    images: [{ url: "/og?title=Casos+Reales&tag=Resultados+reales" }],
   },
 };
 
 const cases = [
   {
-    client: "Clinica capilar",
+    id: "clinica-capilar",
+    client: "Clínica Capilar",
     sector: "Salud · Madrid",
     system: "Lead Qualification System",
-    tag: "Lead Qualification",
-    before: "2–3 días de espera · 60% de llamadas sin conversion",
-    after: "−40% tiempo en llamadas · solo leads precualificados",
+    tag: "Sistema A",
     metric: "−40%",
     metricLabel: "tiempo en llamadas iniciales",
+    before: "2–3 días de espera · 60% de llamadas sin conversión",
+    after: "−40% tiempo · solo leads precualificados",
     challenge:
-      "El equipo de captacion atendia llamadas de personas que claramente no eran candidatos: presupuesto incompatible, expectativas irreales o zona geografica fuera de cobertura. Cada llamada malgastada era tiempo perdido en leads que podrian haber filtrado solos.",
+      "El equipo atendía llamadas de personas que claramente no eran candidatos: presupuesto incompatible, expectativas irreales o zona fuera de cobertura. Tiempo perdido que no era recuperable.",
     solution: [
-      "Formulario multi-paso en web con logica condicional segun tipo de tratamiento",
-      "Lead scoring automatico: presupuesto, urgencia, tratamiento solicitado",
-      "Pipeline en Go High Level con etapas especificas para clinica",
-      "Email y WhatsApp automaticos segun puntuacion del lead",
-      "Notificacion prioritaria al equipo cuando llega lead calificado",
+      "Formulario multi-paso con lógica condicional por tratamiento",
+      "Lead scoring: presupuesto, urgencia, tratamiento solicitado",
+      "Pipeline en Go High Level con etapas específicas para clínica",
+      "Email y WhatsApp automáticos según puntuación del lead",
+      "Notificación prioritaria al equipo por cada lead calificado",
     ],
-    result: "El equipo ahora solo habla con leads que ya pasaron el primer filtro automatico.",
+    result: "El equipo solo habla con leads que ya pasaron el primer filtro automático.",
+    serviceHref: "/servicios#lead-qualification-system",
+    solucionHref: "/soluciones#clinicas-hospitales",
   },
   {
-    client: "Empresa de eventos",
+    id: "eventos-barcelona",
+    client: "Empresa de Eventos",
     sector: "Eventos · Barcelona",
     system: "Proposal Automation System",
-    tag: "Proposal Automation",
-    before: "1–3 días por propuesta · perdida de clientes ante competidores",
-    after: "8 minutos por propuesta · imagen profesional consistente",
+    tag: "Sistema B",
     metric: "8 min",
-    metricLabel: "de peticion a propuesta enviada",
+    metricLabel: "de petición a propuesta enviada",
+    before: "1–3 días por propuesta · pérdida de clientes ante competidores",
+    after: "8 minutos por propuesta · imagen profesional consistente",
     challenge:
-      "Las peticiones de presupuesto tardaban entre 1 y 3 dias en responderse. En ese tiempo, el potencial cliente ya habia pedido presupuesto a 3 competidores y la decision estaba practicamente tomada.",
+      "Las peticiones de presupuesto tardaban entre 1 y 3 días. En ese tiempo, el potencial cliente ya había pedido precio a 3 competidores y la decisión estaba prácticamente tomada.",
     solution: [
-      "Formulario de intake de evento: tipo, fecha, aforo, ciudad, presupuesto",
-      "Sistema de generacion automatica de propuesta web desde los datos del formulario",
-      "Envio inmediato al cliente con pagina de propuesta personalizada",
-      "Pipeline de seguimiento: apertura de email, clicks, seguimiento si no hay respuesta",
-      "Integracion completa con Go High Level",
+      "Formulario de intake: tipo de evento, fecha, aforo, ciudad, presupuesto",
+      "Generación automática de propuesta web desde los datos del formulario",
+      "Envío inmediato al cliente con propuesta personalizada",
+      "Pipeline de seguimiento: apertura, clics, seguimiento si no hay respuesta",
+      "Integración completa con Go High Level",
     ],
-    result: "Propuesta generada en 8 minutos desde que llega la peticion. El cliente la recibe antes de que haya podido contactar a la competencia.",
+    result: "Propuesta lista en 8 minutos desde que llega la petición. El cliente la recibe antes de contactar a la competencia.",
+    serviceHref: "/servicios#proposal-automation",
+    solucionHref: "/soluciones#empresas-eventos",
   },
   {
-    client: "Academia de formacion online",
-    sector: "Formacion · Internacional",
+    id: "academia-online",
+    client: "Academia Online",
+    sector: "Formación · Internacional",
     system: "WhatsApp + CRM Automation",
-    tag: "WhatsApp + CRM",
-    before: "Leads sin respuesta en 24h · tasa de respuesta email < 20%",
-    after: "0 leads sin respuesta · respuesta WhatsApp en segundos",
+    tag: "Sistema C",
     metric: "0",
     metricLabel: "leads sin respuesta en 24h",
+    before: "Leads sin respuesta en 24h · tasa de respuesta email < 20%",
+    after: "0 leads sin respuesta · respuesta WhatsApp en segundos",
     challenge:
-      "Muchos interesados llegaban desde anuncios y redes sociales, pero el porcentaje de conversion era muy bajo. La mayoria no respondia emails y se perdia el lead sin que nadie hiciera seguimiento.",
+      "Muchos interesados llegaban desde anuncios y redes, pero el porcentaje de conversión era muy bajo. La mayoría no respondía emails y el lead se perdía sin que nadie hiciera seguimiento.",
     solution: [
-      "Agente automatico de WhatsApp integrado con GHL",
-      "Flujo de bienvenida y precualificacion por WhatsApp",
-      "Secuencia de nurturing por email 7 dias para los que no respondian",
-      "WhatsApp de reactivacion al dia 3 si no habia apertura de email",
+      "Agente automático de WhatsApp integrado con GHL",
+      "Flujo de bienvenida y precualificación por WhatsApp",
+      "Secuencia de nurturing por email durante 7 días",
+      "WhatsApp de reactivación al día 3 si no había apertura de email",
       "Pipeline claro: Lead → Nurture → Llamada → Matriculado",
     ],
-    result: "Todos los leads reciben respuesta automatica en los primeros 5 minutos. Tasa de respuesta en WhatsApp muy superior al email.",
+    result: "Todos los leads reciben respuesta automática en los primeros 5 minutos. Tasa de respuesta en WhatsApp muy superior al email.",
+    serviceHref: "/servicios#whatsapp-crm-automation",
+    solucionHref: "/soluciones#formacion-cursos",
   },
 ];
 
 export default function CasosPage() {
   return (
-    <div className="pt-32 pb-20">
-      <div className="max-w-4xl mx-auto px-6">
-        <span className="inline-block text-xs font-mono text-accent border border-accent/30 rounded px-2 py-0.5 mb-6">
-          Casos reales
-        </span>
-        <h1 className="text-4xl md:text-5xl font-bold text-foreground leading-tight mb-4">
-          Sistemas que estan funcionando hoy.
-        </h1>
-        <p className="text-foreground-muted text-lg mb-16 max-w-xl">
-          Sin mockups, sin demos. Negocios reales con procesos que antes dependian de personas y ahora funcionan solos.
-        </p>
+    <>
+      {/* Page header */}
+      <div className="pt-32 pb-16 border-b border-border">
+        <div className="max-w-4xl mx-auto px-6">
+          <span className="tag">Casos reales</span>
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground leading-tight mb-4 tracking-tight">
+            Sistemas que están<br className="hidden md:block" /> funcionando hoy.
+          </h1>
+          <p className="text-foreground-muted text-lg max-w-xl leading-relaxed">
+            Sin mockups, sin demos. Negocios reales con procesos que antes dependían de personas y ahora funcionan solos.
+          </p>
+        </div>
+      </div>
 
-        <div className="flex flex-col gap-20">
-          {cases.map((c, i) => (
-            <div key={i} className="border-t border-border pt-12">
+      <div className="max-w-4xl mx-auto px-6 py-20">
+        <div className="flex flex-col gap-24">
+          {cases.map((c) => (
+            <div key={c.id} id={c.id} className="scroll-mt-24">
 
               {/* Header */}
-              <div className="flex items-start justify-between mb-6 gap-4 flex-wrap">
+              <div className="flex items-start justify-between mb-6 gap-4 flex-wrap pb-6 border-b border-border">
                 <div>
-                  <h2 className="text-2xl font-bold text-foreground">{c.client}</h2>
-                  <p className="text-sm text-muted mt-0.5">{c.sector}</p>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="tag">{c.tag}</span>
+                    <span className="text-xs text-muted font-mono">{c.system}</span>
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">{c.client}</h2>
+                  <p className="text-sm text-muted mt-1">{c.sector}</p>
                 </div>
-                <span className="text-xs font-mono text-accent border border-accent/30 rounded px-2 py-0.5 shrink-0">
-                  {c.tag}
-                </span>
+                <div className="text-right">
+                  <p className="text-5xl font-bold text-accent leading-none tabular-nums">{c.metric}</p>
+                  <p className="text-xs text-muted mt-1">{c.metricLabel}</p>
+                </div>
               </div>
 
-              {/* Before / After strip */}
+              {/* Before / After */}
               <div className="grid grid-cols-2 gap-3 mb-8">
                 <div className="bg-red-950/20 border border-red-900/30 rounded-xl p-4">
-                  <p className="text-xs text-red-400/70 uppercase tracking-wider mb-2">Antes</p>
+                  <p className="text-[10px] text-red-400/70 uppercase tracking-widest font-mono mb-2">Antes</p>
                   <p className="text-sm text-red-300/80 leading-snug">{c.before}</p>
                 </div>
                 <div className="bg-emerald-950/20 border border-emerald-900/30 rounded-xl p-4">
-                  <p className="text-xs text-emerald-400/70 uppercase tracking-wider mb-2">Ahora</p>
+                  <p className="text-[10px] text-emerald-400/70 uppercase tracking-widest font-mono mb-2">Ahora</p>
                   <p className="text-sm text-emerald-300/80 leading-snug">{c.after}</p>
                 </div>
               </div>
 
-              {/* Metric */}
-              <div className="flex items-end gap-3 mb-8">
-                <span className="text-6xl font-bold text-accent leading-none">{c.metric}</span>
-                <span className="text-sm text-muted mb-2">{c.metricLabel}</span>
-              </div>
-
               {/* Challenge + Solution */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                  <p className="text-xs text-muted uppercase tracking-wider mb-3">El reto</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div className="bg-surface border border-border rounded-xl p-5">
+                  <p className="text-[11px] text-muted uppercase tracking-widest font-mono mb-3">El reto</p>
                   <p className="text-sm text-foreground-muted leading-relaxed">{c.challenge}</p>
                 </div>
-                <div>
-                  <p className="text-xs text-muted uppercase tracking-wider mb-3">La solucion</p>
-                  <ul className="flex flex-col gap-2">
+                <div className="bg-surface border border-border rounded-xl p-5">
+                  <p className="text-[11px] text-muted uppercase tracking-widest font-mono mb-3">La solución</p>
+                  <ul className="flex flex-col gap-2.5">
                     {c.solution.map((s, j) => (
-                      <li key={j} className="flex gap-2 text-sm text-foreground-muted items-start">
-                        <span className="text-accent mt-0.5 shrink-0">→</span>
+                      <li key={j} className="flex gap-2.5 text-sm text-foreground-muted items-start">
+                        <span className="text-accent mt-0.5 shrink-0 font-mono">→</span>
                         {s}
                       </li>
                     ))}
@@ -142,26 +154,39 @@ export default function CasosPage() {
                 </div>
               </div>
 
-              <div className="mt-6 bg-accent/8 border border-accent/20 rounded-lg p-4">
-                <p className="text-xs text-muted uppercase tracking-wider mb-1">Resultado</p>
-                <p className="text-sm text-accent font-medium">{c.result}</p>
+              {/* Result + cross-links */}
+              <div className="bg-accent/5 border border-accent/20 rounded-xl p-5 flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <p className="text-[11px] text-muted uppercase tracking-widest font-mono mb-1">Resultado</p>
+                  <p className="text-sm text-accent font-medium leading-snug">{c.result}</p>
+                </div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <Link href={c.solucionHref} className="text-xs text-foreground-muted hover:text-foreground transition-colors font-mono underline underline-offset-4">
+                    Ver solución para este sector →
+                  </Link>
+                  <Link href={c.serviceHref} className="btn-secondary text-xs py-2">
+                    Ver sistema en detalle →
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-24 bg-surface border border-border rounded-2xl p-10 text-center">
-          <h2 className="text-2xl font-bold text-foreground mb-3">
-            ¿Tu negocio podria ser el proximo caso?
+        {/* Bottom CTA */}
+        <div className="mt-24 bg-surface border border-border rounded-2xl p-10 md:p-14 text-center">
+          <span className="tag mb-4 inline-block">¿El tuyo también?</span>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3 tracking-tight">
+            Tu negocio podría ser el próximo.
           </h2>
-          <p className="text-foreground-muted mb-6 max-w-md mx-auto">
-            Empieza por el diagnostico. En 30 minutos te digo que sistema necesitas y si tiene sentido implementarlo.
+          <p className="text-foreground-muted mb-8 max-w-md mx-auto text-sm leading-relaxed">
+            Empieza por el diagnóstico. En 30 minutos te digo qué sistema necesitas y si tiene sentido implementarlo.
           </p>
-          <Link href="/diagnostico" className="btn-primary">
-            Solicita tu diagnostico gratuito →
+          <Link href="/diagnostico" className="btn-primary text-base px-8 py-3.5">
+            Solicita tu diagnóstico gratuito →
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }
