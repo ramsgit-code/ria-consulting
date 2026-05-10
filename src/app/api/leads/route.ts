@@ -7,6 +7,7 @@ export async function POST(req: NextRequest) {
 
   try {
     data = await req.json();
+    console.log("[leads API] Received lead:", { nombre: data.nombre, empresa: data.empresa, email: data.email });
 
     // 1. Lead scoring
     const score = calculateScore({
@@ -30,11 +31,14 @@ export async function POST(req: NextRequest) {
       tier,
     });
 
+    console.log("[leads API] Score:", score, "Tier:", tier);
+    console.log("[leads API] Env check - API_KEY:", !!process.env.GHL_API_KEY, "LOC_ID:", !!process.env.GHL_LOCATION_ID, "PIPELINE:", !!process.env.GHL_PIPELINE_ID, "STAGE:", !!process.env.GHL_STAGE_NUEVO_LEAD);
+
     // 2. Parse name
     const [firstName, ...rest] = (data.nombre as string).trim().split(" ");
     const lastName = rest.join(" ");
 
-    // 3. Create contact — solo campos básicos
+    // 3. Create or retrieve contact
     const contactRes = await createOrUpdateContact({
       firstName,
       lastName,
@@ -46,19 +50,19 @@ export async function POST(req: NextRequest) {
     });
 
     const contactId: string | undefined = contactRes?.contact?.id;
+    console.log("[leads API] Contact ID:", contactId);
 
     if (!contactId) {
       console.error("[leads API] No contact ID returned:", JSON.stringify(contactRes));
       return NextResponse.json({ ok: true, score, tier, warn: "no contact id" });
     }
 
-    // 4. Create opportunity — con todos los campos del formulario como custom fields
+    // 4. Create opportunity with all form fields as custom fields
     if (!process.env.GHL_PIPELINE_ID || !process.env.GHL_STAGE_NUEVO_LEAD) {
-      console.warn("[leads API] GHL_PIPELINE_ID or GHL_STAGE_NUEVO_LEAD not set");
+      console.error("[leads API] MISSING ENV VARS: GHL_PIPELINE_ID or GHL_STAGE_NUEVO_LEAD not set — skipping opportunity");
     } else {
       const opportunityName = `${data.nombre} — ${data.empresa} [${tier.toUpperCase()} · ${score}pts]`;
-
-      await createOpportunity({
+      const oppRes = await createOpportunity({
         name:            opportunityName,
         pipelineId:      process.env.GHL_PIPELINE_ID,
         pipelineStageId: process.env.GHL_STAGE_NUEVO_LEAD,
@@ -66,13 +70,15 @@ export async function POST(req: NextRequest) {
         status:          "open",
         customFields:    buildOpportunityFields(data, score, tier),
       });
+      console.log("[leads API] Opportunity created:", oppRes?.opportunity?.id);
     }
 
+    console.log("[leads API] Done OK — score:", score, "tier:", tier);
     return NextResponse.json({ ok: true, score, tier });
 
   } catch (err) {
     console.error("[leads API] ERROR:", err instanceof Error ? err.message : String(err));
-    console.error("[leads API] Lead:", { nombre: data.nombre, empresa: data.empresa, email: data.email });
+    console.error("[leads API] Lead data:", { nombre: data.nombre, empresa: data.empresa, email: data.email });
     return NextResponse.json({ ok: true, fallback: true, error: (err as Error).message });
   }
 }
