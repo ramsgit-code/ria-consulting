@@ -4,23 +4,23 @@ import { m } from "framer-motion";
 import { TrendingUp, Clock, Zap, Award } from "lucide-react";
 
 const metrics = [
-  { icon: TrendingUp, value: "+60%", label: "Mejora en tiempo de respuesta", sub: "Media de clientes activos" },
-  { icon: Clock,      value: "8 min", label: "De llamada a propuesta",        sub: "Antes: 2 dias" },
-  { icon: Zap,        value: "24/7",  label: "Cobertura con voice AI",        sub: "Vapi + Retell" },
-  { icon: Award,      value: "3",     label: "Sistemas en produccion",        sub: "Espana" },
+  { icon: TrendingUp, value: "+60%", label: "Mejora en conversión", sub: "Media de clientes activos" },
+  { icon: Clock,      value: "8 min", label: "De llamada a propuesta", sub: "Antes: 2 días" },
+  { icon: Zap,        value: "24/7",  label: "Cobertura con Voice AI", sub: "Vapi + Retell" },
+  { icon: Award,      value: "3",     label: "Sistemas en producción", sub: "España" },
 ];
 
 const testimonials = [
   {
-    quote: "Antes tardabamos 2 dias en enviar una propuesta. Ahora tarda 8 minutos y la recibe el cliente mejor presentada.",
+    quote: "Antes tardábamos 2 días en enviar una propuesta. Ahora tarda 8 minutos y la recibe el cliente mejor presentada.",
     author: "Director comercial",
     company: "Empresa de eventos · Barcelona",
     initials: "DC",
   },
   {
-    quote: "El equipo solo habla con quien tiene intencion real de compra. Redujo el ruido en el pipeline al 80%.",
+    quote: "El equipo solo habla con quien tiene intención real de compra. Redujo el ruido en el pipeline al 80%.",
     author: "Gerente comercial",
-    company: "Clinica capilar · Madrid",
+    company: "Clínica capilar · Madrid",
     initials: "GC",
   },
 ];
@@ -34,11 +34,11 @@ export function SocialProof() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-14 max-w-2xl"
+          className="mb-16 max-w-2xl"
         >
           <span className="tag">Resultados</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground leading-tight">
-            Numeros, no promesas.
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight tracking-tight">
+            Números,<br className="hidden sm:block" /> no promesas.
           </h2>
         </m.div>
 
@@ -53,10 +53,10 @@ export function SocialProof() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="bg-background p-6 md:p-8 flex flex-col"
+                className="bg-background p-7 md:p-9 flex flex-col"
               >
-                <Icon size={18} className="text-accent mb-4 opacity-70" />
-                <p className="text-4xl md:text-5xl font-bold text-foreground leading-none mb-3 tracking-tight tabular-nums">
+                <Icon size={16} className="text-accent mb-5 opacity-60" />
+                <p className="text-5xl md:text-6xl font-bold text-foreground leading-none mb-3 tracking-tight tabular-nums">
                   {item.value}
                 </p>
                 <p className="text-sm font-medium text-foreground-muted leading-snug mb-1">{item.label}</p>
@@ -75,14 +75,23 @@ export function SocialProof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="bg-background border border-border rounded-2xl p-8 flex flex-col hover:border-accent/30 transition-colors"
+              className="bg-background border border-border rounded-2xl p-8 md:p-10 flex flex-col hover:border-accent/25 transition-colors duration-300"
             >
-              <div className="text-accent text-2xl font-serif leading-none mb-4 opacity-60">"</div>
-              <p className="text-foreground leading-relaxed mb-8 text-[15px] flex-1">
-                {t.quote}
+              {/* Stars */}
+              <div className="flex gap-1 mb-6">
+                {[...Array(5)].map((_, j) => (
+                  <svg key={j} width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-accent">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                ))}
+              </div>
+
+              <p className="text-foreground leading-relaxed mb-8 text-[15px] md:text-base flex-1 italic">
+                "{t.quote}"
               </p>
-              <div className="flex items-center gap-3 pt-5 border-t border-border">
-                <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent font-mono text-xs font-bold">
+
+              <div className="flex items-center gap-3 pt-6 border-t border-border">
+                <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent font-mono text-xs font-bold shrink-0">
                   {t.initials}
                 </div>
                 <div>
