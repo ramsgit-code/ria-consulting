@@ -7,8 +7,15 @@ on:
   workflow_dispatch:
     inputs:
       topic:
-        description: "Tema del articulo (opcional)"
+        description: "Tema del articulo (opcional — si esta vacio usa noticias actuales)"
         required: false
+      mode:
+        description: "Modo: 'news' (noticias actuales) o 'queue' (cola planificada)"
+        required: false
+        default: "news"
+
+permissions:
+  contents: write
 
 jobs:
   publish:
@@ -28,10 +35,12 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           TOPIC="${{ github.event.inputs.topic }}"
+          MODE="${{ github.event.inputs.mode || 'news' }}"
+
           if [ -n "$TOPIC" ]; then
-            npx tsx scripts/blog-agent.ts --topic="$TOPIC"
+            npx tsx scripts/blog-agent.ts --mode="$MODE" --topic="$TOPIC"
           else
-            npx tsx scripts/blog-agent.ts
+            npx tsx scripts/blog-agent.ts --mode="$MODE"
           fi
 
       - name: Commit and push

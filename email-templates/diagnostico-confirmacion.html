@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>Diagnóstico recibido — Ramiro Perez</title>
+  <style>
+    body, table, td { -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
+    table, td { mso-table-lspace:0pt; mso-table-rspace:0pt; }
+    a { text-decoration:none; }
+    body { margin:0; padding:0; background:#0d0d0d; }
+
+    @media screen and (max-width:600px) {
+      .wrap   { width:100% !important; }
+      .pad    { padding:28px 20px !important; }
+      .title  { font-size:26px !important; }
+      .cols td { display:block !important; width:100% !important; padding:10px 0 !important; border-right:none !important; border-bottom:1px solid #222 !important; }
+      .cols td:last-child { border-bottom:none !important; }
+      .btn a  { display:block !important; }
+    }
+  </style>
+</head>
+
+<!-- Preview -->
+<div style="display:none;max-height:0;overflow:hidden;font-size:1px;color:#0d0d0d;">
+  He recibido tu diagnóstico. Lo reviso antes de nuestra llamada.&#8203;&zwnj;&nbsp;&#847;&zwnj;&nbsp;
+</div>
+
+<body>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0d0d0d;">
+<tr><td align="center" style="padding:32px 16px 48px;">
+
+  <table class="wrap" width="560" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;width:100%;">
+
+    <!-- LOGO -->
+    <tr>
+      <td style="padding-bottom:32px;">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td style="vertical-align:middle;">
+              <div style="width:26px;height:26px;background:#e8ff00;border-radius:5px;text-align:center;line-height:26px;font-size:13px;font-weight:900;color:#0a0a0a;font-family:'Courier New',monospace;">R</div>
+            </td>
+            <td style="vertical-align:middle;padding-left:9px;">
+              <span style="font-size:14px;font-weight:600;color:#f5f5f5;">Ramiro Perez<span style="color:#e8ff00;">.</span></span>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- HERO -->
+    <tr>
+      <td class="pad" style="background:#111;border:1px solid #1e1e1e;border-radius:14px;padding:40px 36px;">
+        <div style="height:2px;background:linear-gradient(90deg,#e8ff00,transparent);border-radius:2px;margin-bottom:28px;"></div>
+        <div style="display:inline-block;border:1px solid rgba(232,255,0,0.3);border-radius:4px;padding:4px 10px;margin-bottom:18px;">
+          <span style="font-size:11px;color:#e8ff00;font-family:'Courier New',monospace;">✓ FORMULARIO RECIBIDO</span>
+        </div>
+        <h1 class="title" style="margin:0 0 16px;font-size:30px;font-weight:700;color:#f5f5f5;line-height:1.2;letter-spacing:-0.5px;">
+          Recibido, {{nombre}}.<br>
+          <span style="color:#e8ff00;">Lo reviso hoy mismo.</span>
+        </h1>
+        <p style="margin:0;font-size:15px;color:#888;line-height:1.7;">
+          He recibido tu diagnóstico. Antes de nuestra llamada reviso tu situación y preparo el análisis de tu proceso comercial. No improviso.
+        </p>
+      </td>
+    </tr>
+
+    <tr><td style="height:16px;"></td></tr>
+
+    <!-- RESUMEN -->
+    <tr>
+      <td class="pad" style="background:#111;border:1px solid #1e1e1e;border-radius:14px;padding:28px 36px;">
+        <p style="margin:0 0 16px;font-size:11px;color:#444;font-family:'Courier New',monospace;letter-spacing:1px;text-transform:uppercase;">Tu diagnóstico</p>
+        <table class="cols" width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td width="33%" style="padding-right:16px;vertical-align:top;border-right:1px solid #222;">
+              <p style="margin:0 0 4px;font-size:10px;color:#444;font-family:'Courier New',monospace;letter-spacing:0.5px;">EMPRESA</p>
+              <p style="margin:0;font-size:14px;font-weight:600;color:#f5f5f5;">{{empresa}}</p>
+            </td>
+            <td width="33%" style="padding:0 16px;vertical-align:top;border-right:1px solid #222;">
+              <p style="margin:0 0 4px;font-size:10px;color:#444;font-family:'Courier New',monospace;letter-spacing:0.5px;">SECTOR</p>
+              <p style="margin:0;font-size:14px;font-weight:600;color:#f5f5f5;">{{sector}}</p>
+            </td>
+            <td width="33%" style="padding-left:16px;vertical-align:top;">
+              <p style="margin:0 0 4px;font-size:10px;color:#444;font-family:'Courier New',monospace;letter-spacing:0.5px;">SCORE</p>
+              <p style="margin:0;font-size:14px;font-weight:600;color:#e8ff00;">{{lead_score}} pts · {{lead_tier}}</p>
+            </td>
+          </tr>
+        </table>
+        <div style="height:1px;background:#1e1e1e;margin:20px 0;"></div>
+        <p style="margin:0 0 6px;font-size:10px;color:#444;font-family:'Courier New',monospace;letter-spacing:0.5px;">LO QUE ME HAS CONTADO</p>
+        <p style="margin:0;font-size:14px;color:#888;line-height:1.65;font-style:italic;">"{{problema_principal}}"</p>
+      </td>
+    </tr>
+
+    <tr><td style="height:16px;"></td></tr>
+
+    <!-- PASOS -->
+    <tr>
+      <td style="padding:0 4px;">
+        <p style="margin:0 0 18px;font-size:11px;color:#444;font-family:'Courier New',monospace;letter-spacing:1px;text-transform:uppercase;">Qué pasa ahora</p>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:8px;">
+          <tr>
+            <td width="48" style="vertical-align:top;padding-right:14px;">
+              <div style="width:36px;height:36px;background:#111;border:1px solid #1e1e1e;border-radius:50%;text-align:center;line-height:36px;font-size:11px;font-family:'Courier New',monospace;color:#e8ff00;font-weight:700;">01</div>
+            </td>
+            <td style="vertical-align:middle;">
+              <p style="margin:0 0 2px;font-size:14px;font-weight:600;color:#f5f5f5;">Reviso tu diagnóstico</p>
+              <p style="margin:0;font-size:13px;color:#555;line-height:1.5;">Analizo tu proceso antes de la llamada.</p>
+            </td>
+          </tr>
+        </table>
+        <div style="width:1px;height:16px;background:#1e1e1e;margin-left:18px;margin-bottom:8px;"></div>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:8px;">
+          <tr>
+            <td width="48" style="vertical-align:top;padding-right:14px;">
+              <div style="width:36px;height:36px;background:#111;border:1px solid #1e1e1e;border-radius:50%;text-align:center;line-height:36px;font-size:11px;font-family:'Courier New',monospace;color:#e8ff00;font-weight:700;">02</div>
+            </td>
+            <td style="vertical-align:middle;">
+              <p style="margin:0 0 2px;font-size:14px;font-weight:600;color:#f5f5f5;">Te escribo en menos de 24h</p>
+              <p style="margin:0;font-size:13px;color:#555;line-height:1.5;">Con un hueco para la sesión de 30 min.</p>
+            </td>
+          </tr>
+        </table>
+        <div style="width:1px;height:16px;background:#1e1e1e;margin-left:18px;margin-bottom:8px;"></div>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td width="48" style="vertical-align:top;padding-right:14px;">
+              <div style="width:36px;height:36px;background:rgba(232,255,0,0.08);border:1px solid rgba(232,255,0,0.3);border-radius:50%;text-align:center;line-height:36px;font-size:11px;font-family:'Courier New',monospace;color:#e8ff00;font-weight:700;">03</div>
+            </td>
+            <td style="vertical-align:middle;">
+              <p style="margin:0 0 2px;font-size:14px;font-weight:600;color:#f5f5f5;">30 minutos. Sin humo.</p>
+              <p style="margin:0;font-size:13px;color:#555;line-height:1.5;">Te digo qué sistema necesitas y si tiene sentido trabajar juntos.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td style="height:24px;"></td></tr>
+
+    <!-- CTA -->
+    <tr>
+      <td class="pad" style="background:#0f0f00;border:1px solid rgba(232,255,0,0.15);border-radius:14px;padding:32px 36px;text-align:center;">
+        <p style="margin:0 0 6px;font-size:18px;font-weight:700;color:#f5f5f5;">¿Prefieres reservar ahora?</p>
+        <p style="margin:0 0 22px;font-size:13px;color:#555;line-height:1.6;">Agenda directamente sin esperar mi respuesta.</p>
+        <table class="btn" cellpadding="0" cellspacing="0" border="0" align="center">
+          <tr>
+            <td style="border-radius:8px;background:#e8ff00;" align="center">
+              <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{calendar_url}}" style="height:48px;v-text-anchor:middle;width:240px;" arcsize="14%" stroke="f" fillcolor="#e8ff00">
+                <w:anchorlock/><center style="color:#0a0a0a;font-family:Arial,sans-serif;font-size:14px;font-weight:700;">Reserva tu slot →</center>
+              </v:roundrect><![endif]-->
+              <!--[if !mso]><!-->
+              <a href="{{calendar_url}}" target="_blank"
+                 style="display:inline-block;padding:14px 36px;font-size:14px;font-weight:700;color:#0a0a0a;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;letter-spacing:-0.2px;">
+                Reserva tu slot →
+              </a>
+              <!--<![endif]-->
+            </td>
+          </tr>
+        </table>
+        <p style="margin:14px 0 0;font-size:11px;color:#444;">Sin compromiso · Puedes cancelar hasta 2h antes</p>
+      </td>
+    </tr>
+
+    <tr><td style="height:32px;"></td></tr>
+
+    <!-- FOOTER -->
+    <tr>
+      <td style="border-top:1px solid #1a1a1a;padding-top:24px;">
+        <p style="margin:0 0 2px;font-size:13px;font-weight:600;color:#f5f5f5;">Ramiro Perez<span style="color:#e8ff00;">.</span></p>
+        <p style="margin:0 0 10px;font-size:12px;color:#444;">Automatización Comercial · Go High Level · España</p>
+        <p style="margin:0;font-size:12px;color:#333;line-height:1.5;">
+          <a href="https://ramiroperez.com" style="color:#444;">ramiroperez.com</a>
+          &nbsp;·&nbsp;
+          <a href="https://www.linkedin.com/in/ramiro-perez-rodero-48148115b" style="color:#444;">LinkedIn</a>
+          &nbsp;·&nbsp;
+          <a href="https://ramiroperez.com/blog" style="color:#444;">Blog</a>
+        </p>
+      </td>
+    </tr>
+
+  </table>
+
+</td></tr>
+</table>
+</body>
+</html>

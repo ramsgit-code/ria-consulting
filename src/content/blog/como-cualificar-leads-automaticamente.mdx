@@ -1,0 +1,61 @@
+---
+title: "Cómo cualificar leads automáticamente sin perder tiempo"
+description: "El 80% de los leads que recibes no van a comprar. Te explico cómo filtrarlos antes de hablar con ellos usando Go High Level y formularios inteligentes."
+date: "2026-04-01"
+tags: ["lead qualification", "automatización", "go high level"]
+---
+
+El tiempo que pierdes hablando con leads que nunca iban a comprar es el coste más alto de tu proceso comercial. Y lo peor es que no aparece en ningún informe.
+
+Una llamada de 20 minutos para descubrir que el presupuesto es la mitad de lo que necesitas, que lo necesitan "para el año que viene" o que lo rellenó alguien curioso sin intención real. Multiplicado por 50 leads al mes, son más de 16 horas perdidas al mes.
+
+## El problema real
+
+La cualificación manual tiene un fallo estructural: depende de que alguien haga la pregunta correcta en el momento correcto. Eso no escala.
+
+Cuando el equipo está ocupado, los leads esperan. Cuando el equipo tiene tiempo, atiende leads malos junto con los buenos. El resultado: conversaciones largas con baja conversión y leads buenos que se enfrían porque nadie les respondió a tiempo.
+
+## La solución práctica
+
+Un sistema de cualificación automática tiene tres componentes:
+
+**Formulario multi-paso con lógica condicional**
+
+No un formulario de contacto genérico. Un formulario donde cada pregunta tiene un propósito: filtrar o avanzar. Las preguntas que importan: tipo de necesidad específica, presupuesto disponible con rangos reales, urgencia del proyecto, situación actual.
+
+La lógica condicional muestra preguntas diferentes según las respuestas anteriores. Un lead de clínica ve preguntas sobre tipo de tratamiento y aforo. Un lead de agencia ve preguntas sobre volumen de propuestas y herramientas actuales.
+
+**Scoring automático en Go High Level**
+
+Cada respuesta suma o resta puntos. Un lead con presupuesto alto, urgencia inmediata y necesidad específica llega como **hot** a tu pipeline. Un lead con presupuesto bajo y sin urgencia entra en nurturing de largo plazo, no en tu agenda.
+
+En GHL se configura con custom fields, tags automáticos y condiciones de workflow. El proceso completo: lead rellena formulario → GHL calcula score → asigna tag (cold/warm/hot) → activa la automatización correspondiente.
+
+**Respuesta automática diferenciada por nivel**
+
+Un lead hot recibe un mensaje de WhatsApp en los primeros 5 minutos con link para agendar. Un lead warm recibe un email con contenido relevante y entra en una secuencia de seguimiento. Un lead cold entra en nurturing de 30 días.
+
+El equipo comercial solo recibe notificación cuando llega un lead hot. El resto del trabajo lo hace el sistema.
+
+## Cómo implementarlo paso a paso
+
+El proceso tiene cuatro fases:
+
+- Define tus criterios de cualificación: presupuesto mínimo, sector, urgencia mínima aceptable. Si no sabes qué hace que un lead sea bueno, el sistema no puede filtrar.
+- Construye el formulario con las preguntas que importan. Typeform, formularios nativos de GHL o un desarrollo embebido en tu web. Lo importante es la lógica condicional.
+- Configura el scoring en GHL. Un custom field por variable crítica, un workflow que sume puntos según respuestas, un tag automático con el resultado final.
+- Crea las automatizaciones de respuesta. WhatsApp + Calendly para leads hot. Email de seguimiento para leads warm. Secuencia de nurturing para leads cold.
+
+El tiempo de implementación es de dos a tres semanas dependiendo de la complejidad del proceso.
+
+## Resultado que puedes esperar
+
+Hospital Capilar redujo un 40% el tiempo que su equipo dedicaba a llamadas iniciales. El equipo ahora solo habla con leads que ya pasaron el primer filtro: presupuesto compatible, tratamiento viable, zona geográfica cubierta.
+
+El volumen de leads no cambió. Lo que cambió fue que el 60% del tiempo de llamadas se recuperó para dedicarlo a los que realmente importan. Y los leads buenos empezaron a recibir respuesta en minutos, no en horas.
+
+Un sistema de cualificación no reduce leads. Los ordena para que puedas trabajar los mejores primero y no perder ninguno por el camino.
+
+---
+
+Si quieres saber qué sistema de cualificación necesitas para tu negocio, empieza por el [diagnóstico gratuito](/diagnostico). En 30 minutos analizo tu proceso actual y te digo exactamente qué habría que montar.

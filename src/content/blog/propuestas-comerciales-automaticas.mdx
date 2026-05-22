@@ -1,0 +1,56 @@
+---
+title: "Propuestas comerciales en 8 minutos: cómo lo hago"
+description: "De 3 días a 8 minutos por propuesta. El sistema que implementé para una empresa de eventos con Go High Level y generación automática de documentos."
+date: "2026-04-08"
+tags: ["propuestas", "automatización", "go high level"]
+---
+
+El cliente pide presupuesto. Tu equipo lo apunta. Alguien se pone a preparar la propuesta cuando tiene tiempo. La envía dos días después. Para entonces, el cliente ya recibió la propuesta de tres competidores y probablemente eligió a quien respondió antes.
+
+Este es el ciclo exacto que tenía Eventos Barcelona cuando empezamos a trabajar juntos.
+
+## El problema real
+
+Una propuesta comercial manual tiene cuatro problemas que nadie quiere reconocer:
+
+Es lenta. Entre la llamada, el análisis de la petición, la maquetación y la revisión, se van entre 1 y 3 días en empresas que trabajan bien. En empresas con más carga, más.
+
+Es inconsistente. Cada comercial hace la propuesta a su manera. El formato varía, los precios se calculan diferente, los márgenes se aplican de forma distinta. No hay dos propuestas iguales.
+
+Pierde momentum. El cliente que pide presupuesto está caliente justo después de la llamada. Dos días después está frío, ha hablado con otros y ya tomó una dirección mental.
+
+No tiene seguimiento. La propuesta se envía y nadie sabe si se abrió, si se leyó, cuándo. El comercial llama "por si tienes dudas" sin información real sobre el estado del lead.
+
+## La solución práctica
+
+El sistema de propuesta automática funciona así:
+
+Después de la llamada con el cliente, el comercial rellena un formulario interno de intake: tipo de servicio, fechas, aforo, ciudad, detalles específicos del evento y margen aplicable. Tarda entre 3 y 5 minutos.
+
+El formulario dispara un webhook que genera automáticamente una propuesta web personalizada con todos los datos del cliente. La propuesta tiene URL propia, diseño profesional con el branding de la empresa y PDF descargable.
+
+En los siguientes 60 segundos el cliente recibe un email con el link a su propuesta. El CRM registra el envío y activa el seguimiento automático: si en 48 horas no hay apertura, envía un recordatorio. Si la propuesta se abre pero no hay respuesta en 72 horas, notifica al comercial.
+
+**8 minutos desde el final de la llamada hasta que el cliente tiene la propuesta en el email.**
+
+## Cómo implementarlo paso a paso
+
+- Diseña el formulario de intake post-llamada. Los campos que necesitas: información del cliente, detalles del servicio, variables que afectan al precio. Este formulario lo rellena el comercial, no el cliente.
+- Configura la generación automática de la propuesta. En GHL puedes hacer esto con documentos dinámicos y custom fields. Para más flexibilidad, un webhook que conecte con una plantilla en Google Docs o un sistema de documentos propio.
+- Crea la página de propuesta personalizada. Una URL tipo `tuempresa.com/propuestas/nombre-empresa` con los datos del cliente, el desglose de servicios y el PDF descargable.
+- Automatiza el envío y el seguimiento. Email automático al enviar, tracking de apertura, recordatorio si no hay respuesta, notificación al comercial si hay interacción.
+- Conecta todo en el pipeline de GHL. La propuesta aparece en el pipeline del deal con su estado: enviada, abierta, en negociación, aceptada, rechazada.
+
+La implementación completa lleva entre 3 y 4 semanas dependiendo de la complejidad del catálogo de servicios.
+
+## Resultado que puedes esperar
+
+Eventos Barcelona pasó de tardar entre 1 y 3 días por propuesta a 8 minutos. La imagen que transmite al cliente cambió completamente: el cliente recibe una propuesta profesional, personalizada y con PDF en menos de lo que dura un café.
+
+La tasa de conversión mejoró. No porque la propuesta sea más barata, sino porque llega primero. En servicios donde varios proveedores compiten por el mismo cliente, quien responde antes tiene ventaja real.
+
+El equipo comercial dejó de dedicar tiempo a maquetar documentos y empezó a dedicar ese tiempo a hacer seguimiento de los leads que habían recibido propuesta. Que es, en realidad, donde está el dinero.
+
+---
+
+Si quieres implementar este sistema en tu empresa, empieza por el [diagnóstico gratuito](/diagnostico). Analizo tu proceso actual de propuestas y te digo exactamente qué se puede automatizar y en cuánto tiempo.

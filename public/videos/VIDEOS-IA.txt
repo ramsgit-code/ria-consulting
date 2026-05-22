@@ -1,0 +1,35 @@
+COMO CREAR Y SUBIR VIDEOS ANTES/DESPUES (IA)
+============================================
+
+PASO 1 — GUION (2 escenas por caso, 20-35 seg cada una)
+  ANTES: caos manual (Excel, WhatsApp, llamadas sin filtro, propuestas tardias)
+  DESPUES: mismo negocio con sistema (formulario, CRM, automatizacion, metricas)
+
+PASO 2 — HERRAMIENTAS IA (elige 1-2)
+  Video generativo: Kling (klingai.com), Runway (runwayml.com), Pika, Luma
+  Avatar + voz: HeyGen, Synthesia (para narrador explicando el cambio)
+  Edicion rapida: CapCut, Descript (unir clips + subtitulos)
+
+  Prompt ejemplo ANTES:
+  "Oficina comercial estresada, persona copiando datos entre Excel y WhatsApp,
+   pantallas desordenadas, tono cinematografico oscuro, realista, 16:9"
+
+  Prompt ejemplo DESPUES:
+  "Mismo negocio, dashboard CRM limpio, notificaciones automaticas,
+   equipo tranquilo revisando leads calificados, luz mas clara, 16:9"
+
+PASO 3 — EXPORTAR
+  Formato: MP4 (H.264), 1920x1080 o 1280x720, sin audio o musica libre de derechos
+  Duracion: 15-40 segundos
+  Nombre: lead-qualification-antes.mp4, lead-qualification-despues.mp4, etc.
+
+PASO 4 — SUBIR A LA WEB
+  Copia los archivos en esta carpeta: public/videos/
+  Edita src/lib/transformations.ts y pon la ruta:
+    video: "/videos/lead-qualification-antes.mp4"
+
+PASO 5 — PRODUCCION (opcional, mejor rendimiento)
+  Sube a Cloudflare Stream o Bunny.net y pega la URL en transformations.ts
+
+PASO 6 — VERIFICAR
+  npm run dev → home → seccion "Antes y despues en video"

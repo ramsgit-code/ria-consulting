@@ -1,0 +1,60 @@
+---
+title: "WhatsApp para ventas: cómo montar un sistema real"
+description: "No un chatbot genérico. Un flujo que cualifica, agenda y notifica a tu equipo automáticamente. Lo que funciona integrado con Go High Level y WhatsApp Business API."
+date: "2026-04-15"
+tags: ["whatsapp", "automatización", "crm"]
+---
+
+WhatsApp es el canal de ventas más usado en España y Latinoamérica. Y también el más caótico en la mayoría de empresas. Mensajes sin respuesta, conversaciones sin historial, leads que se pierden porque nadie los vio a tiempo.
+
+La diferencia entre usarlo bien y usarlo mal no está en el volumen. Está en el sistema.
+
+## El problema real
+
+Cuando WhatsApp funciona como canal de ventas sin estructura, pasan tres cosas:
+
+Los leads llegan y no hay respuesta inmediata. En WhatsApp, la respuesta rápida no es opcional. Los estudios de conversión son claros: un lead que no recibe respuesta en los primeros 5 minutos tiene un 80% menos de probabilidades de convertir que uno que recibe respuesta inmediata. Sin automatización, eso depende de que alguien esté mirando el teléfono.
+
+No hay historial centralizado. Cada comercial tiene conversaciones en su propio WhatsApp. Cuando alguien se va de la empresa, el historial desaparece. Cuando el cliente contacta por otro canal, el equipo no sabe qué se habló antes.
+
+No hay seguimiento estructurado. Un lead que no responde se queda en el chat sin acción. No hay recordatorio automático, no hay secuencia de seguimiento, no hay pipeline. Solo un mensaje enviado que nadie persigue.
+
+## La solución práctica
+
+Un sistema de WhatsApp conectado a Go High Level resuelve los tres problemas de una vez.
+
+**Respuesta inmediata 24/7**
+
+El primer contacto es automático. Cuando un lead escribe al número de WhatsApp Business, recibe respuesta en segundos: bienvenida personalizada, pregunta de cualificación inicial y, si corresponde, link para agendar o formulario de datos.
+
+El tono no suena a robot porque no lo es. El flujo usa variables del perfil del contacto y responde de forma diferente según lo que el lead escriba. No es un árbol de decisión rígido. Es un flujo conversacional.
+
+**Cualificación dentro del chat**
+
+El sistema hace las preguntas clave dentro de la conversación de WhatsApp. Tipo de necesidad, presupuesto disponible, urgencia. Según las respuestas, el lead queda clasificado en GHL con el tag correspondiente y entra en el pipeline adecuado.
+
+Los leads calificados reciben link de Calendly directo en el chat. Los leads que necesitan nurturing entran en una secuencia de seguimiento. El equipo comercial solo recibe notificación cuando hay un lead calificado que agendar.
+
+**Historial centralizado en CRM**
+
+Toda la conversación de WhatsApp queda registrada en el perfil del contacto en GHL. Cualquier miembro del equipo puede ver qué se habló, cuándo, qué se prometió. Si el lead contacta por email o teléfono, el equipo tiene contexto completo.
+
+## Cómo implementarlo paso a paso
+
+- Configura WhatsApp Business API. No el WhatsApp Business normal, sino la API. Necesitas un número de teléfono dedicado y acceso a través de un proveedor (Meta directamente o un proveedor como Twilio). GHL tiene integración nativa.
+- Conecta el número con Go High Level. Una vez configurada la API, GHL recibe y envía mensajes desde su plataforma. Todas las conversaciones centralizadas.
+- Diseña el flujo de bienvenida y cualificación. Las primeras 3-5 preguntas que necesitas para saber si el lead vale tu tiempo. En GHL esto se configura como un workflow con condiciones.
+- Crea las automatizaciones de seguimiento. Si el lead no responde en 24h, mensaje de reactivación. Si qualifica, notificación al comercial y link de agendamiento. Si no qualifica, entrada en nurturing por email.
+- Integra con el pipeline de ventas. Cada lead de WhatsApp tiene su oportunidad en el pipeline de GHL con etapa inicial, propietario asignado y seguimiento automatizado.
+
+## Resultado que puedes esperar
+
+Hermetic implementó este sistema y pasó de responder leads de WhatsApp en horas a tener respuesta automática en segundos. La tasa de respuesta de sus leads subió porque el primer contacto era inmediato y personalizado.
+
+El equipo dejó de perder tiempo en leads que no iban a ningún sitio. El sistema los filtraba antes. Y los leads buenos llegaban al equipo ya con contexto, ya cualificados, listos para una conversación de cierre.
+
+0 leads sin respuesta en las primeras 24 horas. No porque el equipo trabajara más. Porque el sistema trabajaba cuando el equipo no podía.
+
+---
+
+¿Quieres montar un sistema de WhatsApp conectado a tu CRM? Empieza por el [diagnóstico gratuito](/diagnostico). En 30 minutos analizo tu proceso actual y te digo exactamente qué necesitas.

@@ -1,62 +1,66 @@
-// Logo fiel a Lederle Hermetic: engranaje + LEDERLE pequeño + Hermetic grande
+// Lederle Hermetic — engranaje semicircular + LEDERLE / Hermetic
 export function LogoHermetic({ className = "" }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 220 52"
+      viewBox="0 0 210 50"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       aria-label="Lederle Hermetic"
     >
-      {/* Engranaje / gear icon */}
-      <g transform="translate(2, 4)">
-        {/* Circulo exterior del engranaje */}
-        <circle cx="20" cy="20" r="14" stroke="currentColor" strokeWidth="2" fill="none" />
-        {/* Circulo interior */}
-        <circle cx="20" cy="20" r="7" stroke="currentColor" strokeWidth="1.5" fill="none" />
-        {/* Dientes del engranaje — 8 dientes */}
-        {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => {
-          const rad = (angle * Math.PI) / 180;
-          const x1 = 20 + 14 * Math.cos(rad);
-          const y1 = 20 + 14 * Math.sin(rad);
-          const x2 = 20 + 18 * Math.cos(rad);
-          const y2 = 20 + 18 * Math.sin(rad);
+      {/* ── Engranaje ──────────────────────────────────── */}
+      <g transform="translate(2, 1)">
+        {/* Aro exterior */}
+        <circle cx="22" cy="24" r="16" stroke="currentColor" strokeWidth="2.2" fill="none" />
+        {/* Agujero central */}
+        <circle cx="22" cy="24" r="6" stroke="currentColor" strokeWidth="1.8" fill="none" />
+        {/* Dientes rectangulares — 10 dientes */}
+        {Array.from({ length: 10 }).map((_, i) => {
+          const angle = (i * 36 * Math.PI) / 180;
+          const cos = Math.cos(angle);
+          const sin = Math.sin(angle);
+          const x1 = 22 + 16 * cos;
+          const y1 = 24 + 16 * sin;
+          const x2 = 22 + 22 * cos;
+          const y2 = 24 + 22 * sin;
           return (
             <line
-              key={angle}
-              x1={x1}
-              y1={y1}
-              x2={x2}
-              y2={y2}
+              key={i}
+              x1={x1} y1={y1} x2={x2} y2={y2}
               stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
+              strokeWidth="4"
+              strokeLinecap="square"
             />
           );
         })}
       </g>
-      {/* Texto LEDERLE pequeno */}
+
+      {/* ── Línea divisoria horizontal ──────────────────── */}
+      <line x1="50" y1="24" x2="208" y2="24" stroke="currentColor" strokeWidth="0.6" opacity="0.35" />
+
+      {/* ── LEDERLE ─────────────────────────────────────── */}
       <text
-        x="50"
+        x="52"
         y="20"
-        fontFamily="Inter, system-ui, sans-serif"
-        fontSize="9"
-        fontWeight="600"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontSize="8"
+        fontWeight="700"
         fill="currentColor"
-        letterSpacing="2.5"
-        opacity="0.75"
+        letterSpacing="3.5"
+        opacity="0.8"
       >
         LEDERLE
       </text>
-      {/* Texto Hermetic grande */}
+
+      {/* ── Hermetic ────────────────────────────────────── */}
       <text
-        x="48"
-        y="40"
-        fontFamily="Georgia, serif"
-        fontSize="21"
-        fontWeight="700"
+        x="50"
+        y="42"
+        fontFamily="Arial Black, Arial, sans-serif"
+        fontSize="22"
+        fontWeight="900"
         fill="currentColor"
-        letterSpacing="-0.3"
+        letterSpacing="-0.5"
       >
         Hermetic
       </text>
