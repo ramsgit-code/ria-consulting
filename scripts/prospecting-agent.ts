@@ -14,6 +14,9 @@
 import Anthropic from "@anthropic-ai/sdk";
 import * as fs from "fs";
 import * as path from "path";
+import { config } from "dotenv";
+
+config({ path: path.join(process.cwd(), ".env.local") });
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 

@@ -20,7 +20,6 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
       },
       animation: {
         "fade-up": "fadeUp 0.6s ease-out forwards",

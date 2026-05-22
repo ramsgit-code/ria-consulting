@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export function Solution() {
@@ -53,6 +54,18 @@ export function Solution() {
               <p className="text-sm text-foreground-muted leading-relaxed">{item.desc}</p>
             </div>
           ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="mt-10"
+        >
+          <Link href="/soluciones" className="btn-secondary">
+            Ver soluciones por sector
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const problems = [
@@ -42,6 +43,12 @@ export function Problems() {
                 <p className="text-foreground-muted text-sm leading-relaxed">{p}</p>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-10">
+            <Link href="/servicios" className="btn-secondary">
+              Ver los sistemas que solucionan esto
+            </Link>
           </div>
         </motion.div>
       </div>

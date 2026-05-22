@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const testimonials = [
@@ -52,6 +53,12 @@ export function SocialProof() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-10">
+          <Link href="/casos-de-exito" className="btn-secondary">
+            Ver casos completos
+          </Link>
         </div>
       </div>
     </section>

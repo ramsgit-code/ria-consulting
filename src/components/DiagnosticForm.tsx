@@ -83,6 +83,7 @@ export function DiagnosticForm() {
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const {
     register,
@@ -123,15 +124,21 @@ export function DiagnosticForm() {
 
   const onSubmit = async (data: FormData) => {
     setLoading(true);
+    setSubmitError("");
     try {
-      await fetch("/api/leads", {
+      const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        setSubmitError(err.error ?? "No se pudo enviar. Intenta de nuevo.");
+        return;
+      }
       setSubmitted(true);
     } catch {
-      // Silently fail — log to monitoring in production
+      setSubmitError("Error de conexion. Comprueba tu red e intenta de nuevo.");
     } finally {
       setLoading(false);
     }
@@ -395,17 +402,22 @@ export function DiagnosticForm() {
               Siguiente <ArrowRight size={16} />
             </button>
           ) : (
-            <button type="submit" disabled={loading} className="btn-primary">
-              {loading ? (
-                <>
-                  <Loader2 size={16} className="animate-spin" /> Enviando...
-                </>
-              ) : (
-                <>
-                  Enviar solicitud <ArrowRight size={16} />
-                </>
+            <>
+              {submitError && (
+                <p className="text-sm text-red-400 mb-3">{submitError}</p>
               )}
-            </button>
+              <button type="submit" disabled={loading} className="btn-primary">
+                {loading ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" /> Enviando...
+                  </>
+                ) : (
+                  <>
+                    Enviar solicitud <ArrowRight size={16} />
+                  </>
+                )}
+              </button>
+            </>
           )}
         </div>
       </form>
