@@ -1,9 +1,6 @@
 name: Blog Auto-Publisher
 
 on:
-  schedule:
-    # Publica 1 articulo cada lunes a las 8:00 AM UTC
-    - cron: "0 8 * * 1"
   workflow_dispatch:
     inputs:
       topic:
