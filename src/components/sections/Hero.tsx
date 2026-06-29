@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { LogoHospitalCapilar } from "@/components/logos/LogoHospitalCapilar";
+import { LogoGrowth4U } from "@/components/logos/LogoGrowth4U";
 import { LogoEventosBarcelona } from "@/components/logos/LogoEventosBarcelona";
-import { LogoHermetic } from "@/components/logos/LogoHermetic";
 import { Reveal } from "@/components/Reveal";
 
 const stats = [
@@ -78,10 +78,10 @@ export function Hero() {
             <p className="mb-5 text-xs uppercase tracking-wider text-muted">
               Clientes con sistema activo
             </p>
-            <div className="flex flex-wrap items-center gap-8 opacity-60">
-              <LogoHospitalCapilar className="h-5 w-auto text-foreground" />
-              <LogoEventosBarcelona className="h-6 w-auto text-foreground" />
-              <LogoHermetic className="h-5 w-auto text-foreground" />
+            <div className="flex flex-wrap items-center gap-x-10 gap-y-6 opacity-60">
+              <LogoHospitalCapilar className="h-8 w-auto text-foreground" />
+              <LogoGrowth4U className="h-6 w-auto text-foreground" />
+              <LogoEventosBarcelona className="h-9 w-auto text-foreground" />
             </div>
           </div>
         </Reveal>
