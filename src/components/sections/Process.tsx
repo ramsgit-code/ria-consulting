@@ -1,17 +1,21 @@
-import { processSteps } from "@/lib/site-content";
+"use client";
+
+import { useLang } from "@/components/LanguageProvider";
 import { Reveal } from "@/components/Reveal";
 
 export function Process() {
+  const { c } = useLang();
+
   return (
     <section className="relative">
       <div className="section-wide">
         <Reveal>
-          <p className="tag">Como trabajo</p>
-          <h2 className="section-title max-w-2xl">Cuatro pasos. Sin sorpresas.</h2>
+          <p className="tag">{c.process.tag}</p>
+          <h2 className="section-title max-w-2xl">{c.process.title}</h2>
         </Reveal>
 
         <ol className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {processSteps.map((step, i) => (
+          {c.process.steps.map((step, i) => (
             <Reveal as="li" key={step.title} delay={i * 0.08}>
               <div className="card group relative h-full">
                 <span className="font-display text-4xl font-bold text-white/10 transition-colors duration-300 group-hover:text-accent/40">

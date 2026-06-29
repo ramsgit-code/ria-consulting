@@ -3,19 +3,15 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowRight } from "lucide-react";
-
-const links = [
-  { href: "/servicios", label: "Servicios" },
-  { href: "/casos-de-exito", label: "Casos" },
-  { href: "/blog", label: "Blog" },
-  { href: "/sobre-mi", label: "Sobre mi" },
-];
+import { Menu, X, ArrowRight, Languages } from "lucide-react";
+import { useLang } from "@/components/LanguageProvider";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const { c, toggle } = useLang();
+  const links = c.nav.links;
 
   useEffect(() => {
     setOpen(false);
@@ -58,20 +54,38 @@ export function Navbar() {
               {l.label}
             </Link>
           ))}
+          <button
+            onClick={toggle}
+            aria-label={c.nav.switchLabel}
+            className="ml-1 inline-flex items-center gap-1.5 rounded-lg border border-white/10 px-2.5 py-1.5 text-xs font-medium text-foreground-muted transition-colors hover:border-white/20 hover:text-foreground"
+          >
+            <Languages size={14} />
+            {c.nav.switchTo}
+          </button>
           <Link href="/diagnostico" className="btn-primary ml-2 px-4 py-2">
-            Diagnostico
+            {c.nav.cta}
             <ArrowRight size={15} />
           </Link>
         </nav>
 
-        <button
-          className="rounded-lg p-1 text-foreground-muted transition-colors hover:text-foreground md:hidden"
-          onClick={() => setOpen(!open)}
-          aria-label={open ? "Cerrar menu" : "Abrir menu"}
-          aria-expanded={open}
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            onClick={toggle}
+            aria-label={c.nav.switchLabel}
+            className="inline-flex items-center gap-1 rounded-lg border border-white/10 px-2 py-1 text-xs font-medium text-foreground-muted"
+          >
+            <Languages size={13} />
+            {c.nav.switchTo}
+          </button>
+          <button
+            className="rounded-lg p-1 text-foreground-muted transition-colors hover:text-foreground"
+            onClick={() => setOpen(!open)}
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={open}
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {open && (
@@ -91,7 +105,7 @@ export function Navbar() {
             className="btn-primary mt-1 w-full"
             onClick={() => setOpen(false)}
           >
-            Diagnostico
+            {c.nav.cta}
             <ArrowRight size={15} />
           </Link>
         </div>

@@ -4,24 +4,24 @@ import { PublicLayout } from "@/components/PublicLayout";
 
 export const metadata: Metadata = {
   title: {
-    default: "RIA Consulting — Automatizacion Comercial & CRM",
+    default: "RIA Consulting — Automatización Comercial & CRM",
     template: "%s | RIA Consulting",
   },
   description:
-    "Diseno sistemas de captacion, cualificacion y cierre de leads para negocios que quieren vender mas sin trabajar mas. Especialista en Go High Level, WhatsApp automation y propuestas automaticas.",
+    "Diseño sistemas de captación, cualificación y cierre de leads para negocios que quieren vender más sin trabajar más. Especialista en Go High Level, automatización de WhatsApp y propuestas automáticas.",
   keywords: [
-    "automatizacion comercial",
+    "automatización comercial",
     "crm gohighlevel",
     "lead qualification system",
-    "propuestas automaticas",
-    "whatsapp automatizacion",
-    "funnel captacion leads",
+    "propuestas automáticas",
+    "automatización whatsapp",
+    "funnel captación leads",
   ],
   openGraph: {
     type: "website",
     locale: "es_ES",
     alternateLocale: "en_US",
-    siteName: "RIA Consulting — Automatizacion Comercial",
+    siteName: "RIA Consulting — Automatización Comercial",
   },
 };
 

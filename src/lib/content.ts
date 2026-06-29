@@ -1,0 +1,548 @@
+// ──────────────────────────────────────────────────────────────────────────
+// Fuente única de contenido de la web (bilingüe ES / EN).
+// El español va con tildes y ñ correctas. Toda copia visible sale de aquí.
+// ──────────────────────────────────────────────────────────────────────────
+
+export type Lang = "es" | "en";
+
+export const LOGOS = {
+  hospitalCapilar: "/logos/hospital-capilar.png",
+  eventosBarcelona: "/logos/eventos-barcelona.png",
+  growth4u: "/logos/growth4u.png",
+};
+
+export const content = {
+  es: {
+    nav: {
+      links: [
+        { href: "/servicios", label: "Servicios" },
+        { href: "/casos-de-exito", label: "Casos" },
+        { href: "/blog", label: "Blog" },
+        { href: "/sobre-mi", label: "Sobre mí" },
+      ],
+      cta: "Diagnóstico",
+      switchTo: "EN",
+      switchLabel: "Ver en inglés",
+    },
+
+    hero: {
+      eyebrow: "Go High Level · Automatización comercial con IA",
+      titlePre: "Vende más sin ",
+      titleHighlight: "perseguir leads",
+      titlePost: " a mano.",
+      subtitle:
+        "Diseño tu sistema de captación, cualificación y cierre en Go High Level. Formularios, WhatsApp, correo y propuestas conectados en un solo flujo automático.",
+      ctaPrimary: "Solicitar diagnóstico gratuito",
+      ctaSecondary: "Ver los sistemas",
+      note: "30 min · Sin compromiso · Respuesta en 24 h",
+      offeringTitle: "Qué construyo",
+      offering: [
+        "Captación y cualificación de leads con scoring",
+        "CRM en Go High Level a tu medida",
+        "Automatización en WhatsApp, Telegram, correo y redes",
+        "Propuestas automáticas en minutos",
+      ],
+      logosLabel: "Clientes con sistema activo",
+    },
+
+    metrics: [
+      { value: "×3", label: "más rápido respondiendo a cada lead" },
+      { value: "8 min", label: "de la consulta a la propuesta enviada" },
+      { value: "−40%", label: "tiempo en tareas comerciales manuales" },
+      { value: "24/7", label: "captación y seguimiento sin descanso" },
+    ],
+
+    cases: {
+      tag: "Resultados",
+      title: "Casos reales, sin maquetas.",
+      subtitle:
+        "Negocios reales con Go High Level como base de cada implementación.",
+      cta: "Leer casos completos",
+      items: [
+        {
+          client: "Hospital Capilar",
+          logo: LOGOS.hospitalCapilar,
+          sector: "Salud · Madrid",
+          tag: "Lead Qualification",
+          challenge: "Llamadas a candidatos sin criterio previo.",
+          solution: "Formulario, scoring y pipeline en Go High Level.",
+          metric: "−32%",
+          metricLabel: "coste por paciente (CPP)",
+        },
+        {
+          client: "Eventos Barcelona",
+          logo: LOGOS.eventosBarcelona,
+          sector: "Eventos · Barcelona",
+          tag: "Proposal Automation",
+          challenge: "Propuestas que tardaban entre 1 y 3 días.",
+          solution: "Intake + propuesta automática en Go High Level.",
+          metric: "−85%",
+          metricLabel: "tiempo de respuesta al cliente",
+        },
+        {
+          client: "Growth4U",
+          logo: LOGOS.growth4u,
+          sector: "Marketing · Captación",
+          tag: "CRM Automation",
+          challenge: "Captación manual y sin cualificación de leads.",
+          solution: "Funnel de captación + scoring en Go High Level.",
+          metric: "×3",
+          metricLabel: "mejora del proceso comercial",
+        },
+      ],
+    },
+
+    process: {
+      tag: "Cómo trabajo",
+      title: "Cuatro pasos. Sin sorpresas.",
+      steps: [
+        { title: "Diagnóstico", desc: "30 min. Vemos tu proceso y qué sistema encaja." },
+        { title: "Diseño", desc: "Funnel, pipeline y automatizaciones en Go High Level." },
+        { title: "Implementación", desc: "Formularios, WhatsApp, correos y propuestas conectados." },
+        { title: "Entrega", desc: "Sistema activo + formación. Soporte de 30 días incluido." },
+      ],
+    },
+
+    finalCta: {
+      titlePre: "¿Quieres saber qué ",
+      titleHighlight: "sistema necesitas?",
+      subtitle:
+        "Diagnóstico gratuito de 30 minutos. Te digo si tiene sentido trabajar juntos, sin compromiso.",
+      button: "Solicitar diagnóstico",
+    },
+
+    pageCta: {
+      title: "¿Quieres saber qué sistema necesitas?",
+      subtitle: "Diagnóstico gratuito de 30 minutos en Go High Level.",
+      button: "Solicitar diagnóstico",
+    },
+
+    footer: {
+      tagline: "Sistemas de captación, cualificación y cierre en Go High Level.",
+      cta: "Diagnóstico gratuito",
+      links: [
+        { href: "/servicios", label: "Servicios" },
+        { href: "/casos-de-exito", label: "Casos" },
+        { href: "/soluciones", label: "Soluciones" },
+        { href: "/sobre-mi", label: "Sobre mí" },
+        { href: "/blog", label: "Blog" },
+        { href: "/diagnostico", label: "Diagnóstico" },
+      ],
+      rights: "Automatización comercial",
+    },
+
+    servicios: {
+      tag: "Servicios",
+      title: "Tres sistemas en Go High Level",
+      description:
+        "Cada uno resuelve una parte del proceso comercial. Se pueden implementar juntos o por separado.",
+      problemLabel: "Problema:",
+      forWhoLabel: "Para quién:",
+      cta: "Solicitar diagnóstico",
+      items: [
+        {
+          slug: "lead-qualification-system",
+          title: "Lead Qualification System",
+          tagline: "Filtra automáticamente quién vale tu tiempo.",
+          problem:
+            "Recibes leads pero no sabes cuáles son buenos hasta perder tiempo hablando con ellos.",
+          forWho: "Clínicas, academias y consultoras. Negocios con más de 10 leads al mes.",
+          deliverables: [
+            "Formulario de precualificación multipaso",
+            "Scoring automático (frío / templado / caliente / premium)",
+            "Pipeline en Go High Level",
+            "Automatización por correo y WhatsApp",
+          ],
+        },
+        {
+          slug: "proposal-automation",
+          title: "Proposal Automation System",
+          tagline: "Propuestas en minutos, no en días.",
+          problem:
+            "Crear propuestas a mano es lento y pierdes el momento con el cliente.",
+          forWho: "Agencias y empresas de servicios con más de 5 propuestas al mes.",
+          deliverables: [
+            "Formulario de intake tras la llamada",
+            "Propuesta web y PDF automáticas",
+            "Pipeline de propuesta en Go High Level",
+            "Recordatorios si no hay respuesta",
+          ],
+        },
+        {
+          slug: "crm-automation",
+          title: "CRM Automation",
+          tagline: "Tu CRM en Go High Level, automatizado de punta a punta.",
+          problem:
+            "Mensajes dispersos entre WhatsApp, Telegram, correo y redes, sin historial ni seguimiento en un CRM.",
+          forWho:
+            "Negocios con varios canales de contacto y sin un CRM central que lo ordene.",
+          deliverables: [
+            "CRM de Go High Level configurado a tu proceso",
+            "Automatización en WhatsApp y Telegram",
+            "Seguimiento por correo y redes sociales",
+            "Historial unificado y notificaciones a leads calificados",
+          ],
+        },
+      ],
+    },
+
+    soluciones: {
+      tag: "Soluciones",
+      title: "Adaptado a tu sector",
+      description:
+        "El mismo enfoque en Go High Level, ajustado al ciclo de venta de cada negocio.",
+      problemLabel: "Problema:",
+      solutionLabel: "Solución:",
+      caseLabel: "Caso:",
+      link: "Ver los tres sistemas",
+      items: [
+        {
+          sector: "Salud",
+          title: "Clínicas y Hospitales",
+          pain: "Llamadas sin conversión por falta de filtro previo.",
+          solution: "Precualificación por tratamiento, urgencia y presupuesto en Go High Level.",
+          reference: "Hospital Capilar",
+        },
+        {
+          sector: "Eventos",
+          title: "Empresas de Eventos",
+          pain: "Presupuestos que tardan días; el cliente ya eligió a otro.",
+          solution: "Propuesta automática tras el formulario de intake.",
+          reference: "EB Eventos Barcelona",
+        },
+        {
+          sector: "Formación",
+          title: "Academias y Formación",
+          pain: "Muchos interesados, pocos matriculados y sin seguimiento.",
+          solution: "Captación y nurturing automático en Go High Level.",
+          reference: "Growth4U",
+        },
+        {
+          sector: "Consultoría",
+          title: "Servicios Profesionales",
+          pain: "Cierre lento e inconsistente con los referidos.",
+          solution: "Diagnóstico, propuesta y seguimiento automatizado.",
+          reference: "Hermetic",
+        },
+      ],
+    },
+
+    casos: {
+      tag: "Casos reales",
+      title: "Sistemas que funcionan hoy",
+      description:
+        "Negocios reales con Go High Level como base de cada implementación.",
+    },
+
+    sobreMi: {
+      tag: "Sobre mí",
+      title: "Construyo el sistema, no solo la herramienta",
+      intro: [
+        "Diseño y construyo sistemas comerciales en Go High Level: captación, cualificación y cierre.",
+        "No vendo plantillas. Entrego procesos que funcionan desde el primer día.",
+        "He implementado sistemas reales en clínicas, eventos y captación.",
+      ],
+      specialtiesLabel: "Especialidades",
+      specialties: [
+        "Cualificación de leads en Go High Level",
+        "Automatización de propuestas",
+        "CRM con WhatsApp, Telegram, correo y redes",
+        "Funnels y nurturing",
+        "Integraciones por API",
+      ],
+      principlesLabel: "Cómo trabajo",
+      principles: [
+        "Diagnóstico previo siempre",
+        "Entregables claros",
+        "Soporte de 30 días incluido",
+        "El sistema es tuyo, sin dependencias",
+      ],
+    },
+
+    diagnostico: {
+      tag: "Diagnóstico gratuito",
+      title: "30 minutos para saber qué necesitas",
+      description: "Rellena el formulario. Lo reviso antes de la llamada.",
+      bullets: [
+        "Sin compromiso ni venta agresiva",
+        "Análisis de tu proceso actual",
+        "Recomendación concreta de sistema",
+        "Para negocios con más de 10 leads al mes",
+      ],
+    },
+
+    blog: {
+      tag: "Blog",
+      title: "Guías prácticas",
+      description: "Automatización comercial y Go High Level. Sin teoría vacía.",
+      empty: "Próximamente nuevos artículos.",
+    },
+  },
+
+  en: {
+    nav: {
+      links: [
+        { href: "/servicios", label: "Services" },
+        { href: "/casos-de-exito", label: "Cases" },
+        { href: "/blog", label: "Blog" },
+        { href: "/sobre-mi", label: "About" },
+      ],
+      cta: "Diagnosis",
+      switchTo: "ES",
+      switchLabel: "View in Spanish",
+    },
+
+    hero: {
+      eyebrow: "Go High Level · AI-powered sales automation",
+      titlePre: "Sell more without ",
+      titleHighlight: "chasing leads",
+      titlePost: " by hand.",
+      subtitle:
+        "I design your lead capture, qualification and closing system on Go High Level. Forms, WhatsApp, email and proposals connected in a single automated flow.",
+      ctaPrimary: "Request a free diagnosis",
+      ctaSecondary: "See the systems",
+      note: "30 min · No commitment · Reply within 24 h",
+      offeringTitle: "What I build",
+      offering: [
+        "Lead capture and qualification with scoring",
+        "A Go High Level CRM tailored to you",
+        "Automation across WhatsApp, Telegram, email and social",
+        "Automated proposals in minutes",
+      ],
+      logosLabel: "Clients with a live system",
+    },
+
+    metrics: [
+      { value: "3×", label: "faster response to every lead" },
+      { value: "8 min", label: "from enquiry to proposal sent" },
+      { value: "−40%", label: "time spent on manual sales tasks" },
+      { value: "24/7", label: "capture and follow-up, non-stop" },
+    ],
+
+    cases: {
+      tag: "Results",
+      title: "Real cases, no mockups.",
+      subtitle: "Real businesses, with Go High Level behind every build.",
+      cta: "Read the full cases",
+      items: [
+        {
+          client: "Hospital Capilar",
+          logo: LOGOS.hospitalCapilar,
+          sector: "Healthcare · Madrid",
+          tag: "Lead Qualification",
+          challenge: "Calling candidates with no prior criteria.",
+          solution: "Form, scoring and pipeline on Go High Level.",
+          metric: "−32%",
+          metricLabel: "cost per patient (CPP)",
+        },
+        {
+          client: "Eventos Barcelona",
+          logo: LOGOS.eventosBarcelona,
+          sector: "Events · Barcelona",
+          tag: "Proposal Automation",
+          challenge: "Proposals that took 1 to 3 days.",
+          solution: "Intake + automated proposal on Go High Level.",
+          metric: "−85%",
+          metricLabel: "client response time",
+        },
+        {
+          client: "Growth4U",
+          logo: LOGOS.growth4u,
+          sector: "Marketing · Lead gen",
+          tag: "CRM Automation",
+          challenge: "Manual capture with no lead qualification.",
+          solution: "Capture funnel + scoring on Go High Level.",
+          metric: "3×",
+          metricLabel: "sales process improvement",
+        },
+      ],
+    },
+
+    process: {
+      tag: "How I work",
+      title: "Four steps. No surprises.",
+      steps: [
+        { title: "Diagnosis", desc: "30 min. We review your process and which system fits." },
+        { title: "Design", desc: "Funnel, pipeline and automations on Go High Level." },
+        { title: "Build", desc: "Forms, WhatsApp, emails and proposals connected." },
+        { title: "Handover", desc: "Live system + training. 30 days of support included." },
+      ],
+    },
+
+    finalCta: {
+      titlePre: "Want to know which ",
+      titleHighlight: "system you need?",
+      subtitle:
+        "A free 30-minute diagnosis. I tell you whether it makes sense to work together — no commitment.",
+      button: "Request a diagnosis",
+    },
+
+    pageCta: {
+      title: "Want to know which system you need?",
+      subtitle: "A free 30-minute diagnosis on Go High Level.",
+      button: "Request a diagnosis",
+    },
+
+    footer: {
+      tagline: "Lead capture, qualification and closing systems on Go High Level.",
+      cta: "Free diagnosis",
+      links: [
+        { href: "/servicios", label: "Services" },
+        { href: "/casos-de-exito", label: "Cases" },
+        { href: "/soluciones", label: "Solutions" },
+        { href: "/sobre-mi", label: "About" },
+        { href: "/blog", label: "Blog" },
+        { href: "/diagnostico", label: "Diagnosis" },
+      ],
+      rights: "Sales automation",
+    },
+
+    servicios: {
+      tag: "Services",
+      title: "Three systems on Go High Level",
+      description:
+        "Each one solves a part of the sales process. They can be built together or separately.",
+      problemLabel: "Problem:",
+      forWhoLabel: "For whom:",
+      cta: "Request a diagnosis",
+      items: [
+        {
+          slug: "lead-qualification-system",
+          title: "Lead Qualification System",
+          tagline: "Automatically filter who is worth your time.",
+          problem:
+            "You get leads but can't tell which are good until you've wasted time talking to them.",
+          forWho: "Clinics, academies and consultancies. Businesses with 10+ leads/month.",
+          deliverables: [
+            "Multi-step pre-qualification form",
+            "Automatic scoring (cold / warm / hot / premium)",
+            "Pipeline on Go High Level",
+            "Email and WhatsApp automation",
+          ],
+        },
+        {
+          slug: "proposal-automation",
+          title: "Proposal Automation System",
+          tagline: "Proposals in minutes, not days.",
+          problem:
+            "Building proposals by hand is slow and you lose momentum with the client.",
+          forWho: "Agencies and service businesses with 5+ proposals a month.",
+          deliverables: [
+            "Post-call intake form",
+            "Automated web and PDF proposals",
+            "Proposal pipeline on Go High Level",
+            "Reminders when there's no reply",
+          ],
+        },
+        {
+          slug: "crm-automation",
+          title: "CRM Automation",
+          tagline: "Your Go High Level CRM, automated end to end.",
+          problem:
+            "Messages scattered across WhatsApp, Telegram, email and social, with no history or follow-up in a CRM.",
+          forWho:
+            "Businesses with several contact channels and no central CRM to keep order.",
+          deliverables: [
+            "Go High Level CRM set up to your process",
+            "Automation across WhatsApp and Telegram",
+            "Follow-up over email and social media",
+            "Unified history and alerts for qualified leads",
+          ],
+        },
+      ],
+    },
+
+    soluciones: {
+      tag: "Solutions",
+      title: "Tailored to your sector",
+      description:
+        "The same approach on Go High Level, tuned to each business's sales cycle.",
+      problemLabel: "Problem:",
+      solutionLabel: "Solution:",
+      caseLabel: "Case:",
+      link: "See the three systems",
+      items: [
+        {
+          sector: "Healthcare",
+          title: "Clinics & Hospitals",
+          pain: "Calls with no conversion due to a lack of upfront filtering.",
+          solution: "Pre-qualification by treatment, urgency and budget on Go High Level.",
+          reference: "Hospital Capilar",
+        },
+        {
+          sector: "Events",
+          title: "Event Companies",
+          pain: "Quotes that take days; the client already picked someone else.",
+          solution: "Automated proposal after the intake form.",
+          reference: "EB Eventos Barcelona",
+        },
+        {
+          sector: "Education",
+          title: "Academies & Training",
+          pain: "Lots of interest, few enrolments and no follow-up.",
+          solution: "Automated capture and nurturing on Go High Level.",
+          reference: "Growth4U",
+        },
+        {
+          sector: "Consulting",
+          title: "Professional Services",
+          pain: "Slow, inconsistent closing on referrals.",
+          solution: "Diagnosis, proposal and automated follow-up.",
+          reference: "Hermetic",
+        },
+      ],
+    },
+
+    casos: {
+      tag: "Real cases",
+      title: "Systems that work today",
+      description: "Real businesses, with Go High Level behind every build.",
+    },
+
+    sobreMi: {
+      tag: "About",
+      title: "I build the system, not just the tool",
+      intro: [
+        "I design and build sales systems on Go High Level: capture, qualification and closing.",
+        "I don't sell templates. I deliver processes that work from day one.",
+        "I've built real systems for clinics, events and lead generation.",
+      ],
+      specialtiesLabel: "Specialties",
+      specialties: [
+        "Lead qualification on Go High Level",
+        "Proposal automation",
+        "CRM with WhatsApp, Telegram, email and social",
+        "Funnels and nurturing",
+        "API integrations",
+      ],
+      principlesLabel: "How I work",
+      principles: [
+        "Always a diagnosis first",
+        "Clear deliverables",
+        "30 days of support included",
+        "The system is yours, no lock-in",
+      ],
+    },
+
+    diagnostico: {
+      tag: "Free diagnosis",
+      title: "30 minutes to know what you need",
+      description: "Fill in the form. I review it before the call.",
+      bullets: [
+        "No commitment, no hard selling",
+        "Analysis of your current process",
+        "A concrete system recommendation",
+        "For businesses with 10+ leads a month",
+      ],
+    },
+
+    blog: {
+      tag: "Blog",
+      title: "Practical guides",
+      description: "Sales automation and Go High Level. No empty theory.",
+      empty: "New articles coming soon.",
+    },
+  },
+} as const;
+
+export type Content = (typeof content)["es"];

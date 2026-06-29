@@ -1,67 +1,84 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Check } from "lucide-react";
+import { useLang } from "@/components/LanguageProvider";
+import { LOGOS } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
 
-const stats = [
-  { value: "8 min", label: "para enviar una propuesta" },
-  { value: "−40%", label: "tiempo en llamadas sin filtro" },
-  { value: "24/7", label: "seguimiento automatico" },
-];
-
 const clientLogos = [
-  { src: "/logos/hospital-capilar.png", alt: "Hospital Capilar", h: "h-9" },
-  { src: "/logos/eventos-barcelona.png", alt: "EB Eventos Barcelona", h: "h-9" },
-  { src: "/logos/growth4u.png", alt: "Growth4U", h: "h-5" },
+  { src: LOGOS.hospitalCapilar, alt: "Hospital Capilar", h: "h-9" },
+  { src: LOGOS.eventosBarcelona, alt: "EB Eventos Barcelona", h: "h-9" },
+  { src: LOGOS.growth4u, alt: "Growth4U", h: "h-5" },
 ];
 
 export function Hero() {
+  const { c } = useLang();
+  const h = c.hero;
+
   return (
     <section className="relative overflow-hidden pt-36 pb-20 md:pt-44">
-      {/* glow superior */}
       <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-accent/15 blur-[120px]" />
 
       <div className="section-wide relative !py-0">
         <Reveal>
           <span className="tag">
             <Sparkles size={12} className="text-accent" />
-            Go High Level · Automatizacion comercial con IA
+            {h.eyebrow}
           </span>
         </Reveal>
 
         <Reveal delay={0.05}>
           <h1 className="max-w-3xl text-balance font-display text-5xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-7xl">
-            Vende mas sin{" "}
-            <span className="gradient-text">perseguir leads</span> a mano.
+            {h.titlePre}
+            <span className="gradient-text">{h.titleHighlight}</span>
+            {h.titlePost}
           </h1>
         </Reveal>
 
         <Reveal delay={0.1}>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground-muted">
-            Monto tu sistema de captacion, cualificacion y cierre en Go High
-            Level. Formularios, WhatsApp y propuestas conectados en un solo
-            flujo automatico.
+            {h.subtitle}
           </p>
         </Reveal>
 
         <Reveal delay={0.15}>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link href="/diagnostico" className="btn-primary">
-              Solicitar diagnostico gratuito
+              {h.ctaPrimary}
               <ArrowRight size={16} />
             </Link>
             <Link href="/servicios" className="btn-secondary">
-              Ver los sistemas
+              {h.ctaSecondary}
             </Link>
           </div>
-          <p className="mt-4 text-sm text-muted">
-            30 min · Sin compromiso · Respuesta en 24h
-          </p>
+          <p className="mt-4 text-sm text-muted">{h.note}</p>
         </Reveal>
 
-        {/* bento de metricas */}
-        <Reveal delay={0.2}>
-          <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {stats.map((s) => (
+        {/* qué se vende */}
+        <Reveal delay={0.18}>
+          <div className="mt-10">
+            <p className="mb-3 text-xs uppercase tracking-wider text-muted">
+              {h.offeringTitle}
+            </p>
+            <ul className="flex flex-wrap gap-2.5">
+              {h.offering.map((o) => (
+                <li
+                  key={o}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-sm text-foreground-muted backdrop-blur-md"
+                >
+                  <Check size={13} className="text-accent" />
+                  {o}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+
+        {/* bento de métricas */}
+        <Reveal delay={0.22}>
+          <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {c.metrics.map((s) => (
               <div
                 key={s.label}
                 className="card !p-5 transition-transform duration-300 hover:-translate-y-1"
@@ -76,10 +93,10 @@ export function Hero() {
         </Reveal>
 
         {/* logos */}
-        <Reveal delay={0.25}>
+        <Reveal delay={0.26}>
           <div className="mt-14 border-t border-white/[0.08] pt-8">
             <p className="mb-5 text-xs uppercase tracking-wider text-muted">
-              Clientes con sistema activo
+              {h.logosLabel}
             </p>
             <div className="flex flex-wrap items-center gap-x-10 gap-y-6">
               {clientLogos.map((logo) => (
