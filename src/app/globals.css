@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0a;
+  --background: #070708;
   --foreground: #f5f5f5;
 }
 
@@ -28,37 +28,108 @@ body {
   color: var(--foreground);
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(232, 255, 0, 0.85);
+  color: #000;
+}
+
+/* scrollbar sutil */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #23232b;
+  border-radius: 999px;
+  border: 2px solid #070708;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #34343f;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @layer components {
+  /* ---------- Botones ---------- */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-accent text-black font-semibold px-5 py-2.5 rounded-lg
-           hover:bg-accent-hover transition-colors text-sm
-           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50;
+    @apply relative inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3
+           text-sm font-semibold text-black shadow-glow-sm transition-all duration-200
+           hover:bg-accent-hover hover:shadow-glow hover:-translate-y-0.5
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60
+           active:translate-y-0;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 border border-border text-foreground-muted font-medium px-5 py-2.5 rounded-lg
-           hover:text-foreground hover:border-foreground-muted transition-colors text-sm;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/10
+           bg-white/[0.04] px-6 py-3 text-sm font-medium text-foreground-muted backdrop-blur-md
+           transition-all duration-200 hover:border-white/20 hover:bg-white/[0.07] hover:text-foreground;
   }
 
+  /* ---------- Layout ---------- */
   .section {
-    @apply px-6 py-16 max-w-3xl mx-auto;
+    @apply mx-auto max-w-3xl px-6 py-20 md:py-24;
   }
 
   .section-wide {
-    @apply px-6 py-16 max-w-5xl mx-auto;
+    @apply mx-auto max-w-5xl px-6 py-20 md:py-24;
   }
 
+  /* ---------- Eyebrow / tag como pill ---------- */
   .tag {
-    @apply text-xs font-medium text-accent mb-3 block;
+    @apply mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-accent/20
+           bg-accent/[0.06] px-3 py-1 text-xs font-medium text-accent backdrop-blur-md;
+  }
+  .tag::before {
+    content: "";
+    @apply h-1.5 w-1.5 rounded-full bg-accent shadow-glow-sm;
   }
 
+  /* ---------- Glass card ---------- */
   .card {
-    @apply bg-surface border border-border rounded-lg p-5;
+    @apply relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6
+           shadow-glass backdrop-blur-md transition-all duration-300
+           hover:border-white/20 hover:bg-white/[0.05];
   }
 
+  .glass {
+    @apply rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-md;
+  }
+
+  /* ---------- Tipografia ---------- */
   .section-title {
-    @apply text-2xl md:text-3xl font-semibold text-foreground leading-snug;
+    @apply font-display text-3xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-4xl;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-br from-white via-white to-accent bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .grid-bg {
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
   }
 }

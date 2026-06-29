@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
+import { AuroraBackground } from "@/components/AuroraBackground";
 
 export function PublicLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -15,6 +16,7 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <>
+      <AuroraBackground />
       <AnalyticsTracker />
       <Navbar />
       <main>{children}</main>

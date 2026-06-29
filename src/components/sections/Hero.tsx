@@ -1,39 +1,90 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { LogoHospitalCapilar } from "@/components/logos/LogoHospitalCapilar";
 import { LogoEventosBarcelona } from "@/components/logos/LogoEventosBarcelona";
 import { LogoHermetic } from "@/components/logos/LogoHermetic";
+import { Reveal } from "@/components/Reveal";
+
+const stats = [
+  { value: "8 min", label: "para enviar una propuesta" },
+  { value: "−40%", label: "tiempo en llamadas sin filtro" },
+  { value: "24/7", label: "seguimiento automatico" },
+];
 
 export function Hero() {
   return (
-    <section className="pt-28 pb-16 border-b border-border">
-      <div className="section">
-        <p className="tag">Go High Level · Automatizacion comercial</p>
+    <section className="relative overflow-hidden pt-36 pb-20 md:pt-44">
+      {/* glow superior */}
+      <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-accent/15 blur-[120px]" />
 
-        <h1 className="text-4xl md:text-5xl font-semibold text-foreground leading-tight mb-5">
-          Vende mas sin perseguir leads a mano.
-        </h1>
+      <div className="section-wide relative !py-0">
+        <Reveal>
+          <span className="tag">
+            <Sparkles size={12} className="text-accent" />
+            Go High Level · Automatizacion comercial con IA
+          </span>
+        </Reveal>
 
-        <p className="text-foreground-muted text-lg leading-relaxed mb-8 max-w-xl">
-          Monto tu sistema de captacion, cualificacion y cierre en Go High Level.
-          Formularios, WhatsApp y propuestas conectados en un solo flujo.
-        </p>
+        <Reveal delay={0.05}>
+          <h1 className="max-w-3xl text-balance font-display text-5xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-7xl">
+            Vende mas sin{" "}
+            <span className="gradient-text">perseguir leads</span> a mano.
+          </h1>
+        </Reveal>
 
-        <Link href="/diagnostico" className="btn-primary">
-          Solicitar diagnostico gratuito
-          <ArrowRight size={16} />
-        </Link>
+        <Reveal delay={0.1}>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground-muted">
+            Monto tu sistema de captacion, cualificacion y cierre en Go High
+            Level. Formularios, WhatsApp y propuestas conectados en un solo
+            flujo automatico.
+          </p>
+        </Reveal>
 
-        <p className="text-sm text-muted mt-4">30 min · Sin compromiso · Respuesta en 24h</p>
-
-        <div className="mt-14 pt-8 border-t border-border">
-          <p className="text-xs text-muted mb-5">Clientes con sistema activo</p>
-          <div className="flex flex-wrap items-center gap-8 opacity-50">
-            <LogoHospitalCapilar className="h-5 w-auto text-foreground" />
-            <LogoEventosBarcelona className="h-6 w-auto text-foreground" />
-            <LogoHermetic className="h-5 w-auto text-foreground" />
+        <Reveal delay={0.15}>
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <Link href="/diagnostico" className="btn-primary">
+              Solicitar diagnostico gratuito
+              <ArrowRight size={16} />
+            </Link>
+            <Link href="/servicios" className="btn-secondary">
+              Ver los sistemas
+            </Link>
           </div>
-        </div>
+          <p className="mt-4 text-sm text-muted">
+            30 min · Sin compromiso · Respuesta en 24h
+          </p>
+        </Reveal>
+
+        {/* bento de metricas */}
+        <Reveal delay={0.2}>
+          <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {stats.map((s) => (
+              <div
+                key={s.label}
+                className="card !p-5 transition-transform duration-300 hover:-translate-y-1"
+              >
+                <p className="font-display text-3xl font-semibold tracking-tight text-foreground">
+                  {s.value}
+                </p>
+                <p className="mt-1 text-sm text-foreground-muted">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        {/* logos */}
+        <Reveal delay={0.25}>
+          <div className="mt-14 border-t border-white/[0.08] pt-8">
+            <p className="mb-5 text-xs uppercase tracking-wider text-muted">
+              Clientes con sistema activo
+            </p>
+            <div className="flex flex-wrap items-center gap-8 opacity-60">
+              <LogoHospitalCapilar className="h-5 w-auto text-foreground" />
+              <LogoEventosBarcelona className="h-6 w-auto text-foreground" />
+              <LogoHermetic className="h-5 w-auto text-foreground" />
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

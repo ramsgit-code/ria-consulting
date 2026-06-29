@@ -47,17 +47,25 @@ export default async function BlogPage() {
         {posts.length === 0 ? (
           <p className="text-sm text-muted">Proximamente nuevos articulos.</p>
         ) : (
-          <ul className="flex flex-col gap-4">
+          <ul className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {posts.map((post) => (
               <li key={post.slug}>
-                <Link href={`/blog/${post.slug}`} className="card block hover:border-foreground-muted">
-                  <h2 className="font-medium text-foreground mb-1">{post.title}</h2>
-                  <p className="text-sm text-foreground-muted mb-2">{post.description}</p>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="card group flex h-full flex-col"
+                >
+                  <h2 className="font-display text-lg font-semibold text-foreground transition-colors group-hover:text-accent">
+                    {post.title}
+                  </h2>
+                  <p className="mb-4 mt-2 flex-1 text-sm leading-relaxed text-foreground-muted">
+                    {post.description}
+                  </p>
                   <p className="text-xs text-muted">
                     {post.publishedAt
                       ? new Date(post.publishedAt).toLocaleDateString("es-ES")
                       : ""}
-                    {post.tags.length > 0 && ` · ${post.tags.slice(0, 2).join(", ")}`}
+                    {post.tags.length > 0 &&
+                      ` · ${post.tags.slice(0, 2).join(", ")}`}
                   </p>
                 </Link>
               </li>

@@ -1,21 +1,30 @@
 import { processSteps } from "@/lib/site-content";
+import { Reveal } from "@/components/Reveal";
 
 export function Process() {
   return (
-    <section>
-      <div className="section">
-        <p className="tag">Como trabajo</p>
-        <h2 className="section-title mb-8">Cuatro pasos. Sin sorpresas.</h2>
+    <section className="relative">
+      <div className="section-wide">
+        <Reveal>
+          <p className="tag">Como trabajo</p>
+          <h2 className="section-title max-w-2xl">Cuatro pasos. Sin sorpresas.</h2>
+        </Reveal>
 
-        <ol className="flex flex-col gap-6">
+        <ol className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((step, i) => (
-            <li key={step.title} className="flex gap-4">
-              <span className="text-sm font-medium text-accent shrink-0 w-6">{i + 1}.</span>
-              <div>
-                <h3 className="font-medium text-foreground mb-1">{step.title}</h3>
-                <p className="text-sm text-foreground-muted">{step.desc}</p>
+            <Reveal as="li" key={step.title} delay={i * 0.08}>
+              <div className="card group relative h-full">
+                <span className="font-display text-4xl font-bold text-white/10 transition-colors duration-300 group-hover:text-accent/40">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-3 font-display text-base font-semibold text-foreground">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-foreground-muted">
+                  {step.desc}
+                </p>
               </div>
-            </li>
+            </Reveal>
           ))}
         </ol>
       </div>
