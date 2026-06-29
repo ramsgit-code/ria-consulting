@@ -23,53 +23,58 @@ export function Hero() {
       <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] max-w-full -translate-x-1/2 rounded-full bg-accent/15 blur-[120px]" />
 
       <div className="section-wide relative !py-0">
-        <Reveal>
-          <h1 className="max-w-3xl text-balance font-display text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl sm:leading-[1.05] md:text-7xl">
-            {h.titlePre}
-            <span className="gradient-text">{h.titleHighlight}</span>
-            {h.titlePost}
-          </h1>
-        </Reveal>
+        {/* primera pantalla: titular + clientes (clientes anclados abajo) */}
+        <div className="flex min-h-[calc(100svh-8rem)] flex-col justify-between sm:min-h-[calc(100svh-9rem)] md:min-h-[calc(100svh-11rem)]">
+          <div>
+            <Reveal>
+              <h1 className="max-w-3xl text-balance font-display text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl sm:leading-[1.05] md:text-7xl">
+                {h.titlePre}
+                <span className="gradient-text">{h.titleHighlight}</span>
+                {h.titlePost}
+              </h1>
+            </Reveal>
 
-        <Reveal delay={0.05}>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground-muted">
-            {h.subtitle}
-          </p>
-        </Reveal>
+            <Reveal delay={0.05}>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground-muted">
+                {h.subtitle}
+              </p>
+            </Reveal>
 
-        <Reveal delay={0.1}>
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Link href="/diagnostico" className="btn-primary">
-              {h.ctaPrimary}
-              <ArrowRight size={16} />
-            </Link>
-            <Link href="/servicios" className="btn-secondary">
-              {h.ctaSecondary}
-            </Link>
+            <Reveal delay={0.1}>
+              <div className="mt-9 flex flex-wrap items-center gap-3">
+                <Link href="/diagnostico" className="btn-primary">
+                  {h.ctaPrimary}
+                  <ArrowRight size={16} />
+                </Link>
+                <Link href="/servicios" className="btn-secondary">
+                  {h.ctaSecondary}
+                </Link>
+              </div>
+              <p className="mt-4 text-sm text-muted">{h.note}</p>
+            </Reveal>
           </div>
-          <p className="mt-4 text-sm text-muted">{h.note}</p>
-        </Reveal>
 
-        {/* clientes */}
-        <Reveal delay={0.15}>
-          <div className="mt-12 border-t border-white/[0.08] pt-7 sm:mt-14 sm:pt-8">
-            <p className="mb-5 text-xs uppercase tracking-wider text-muted">
-              {h.logosLabel}
-            </p>
-            <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-5 sm:justify-start sm:gap-x-10 sm:gap-y-6">
-              {clientLogos.map((logo) => (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  key={logo.alt}
-                  src={logo.src}
-                  alt={logo.alt}
-                  className={`${logo.h} w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100`}
-                  loading="lazy"
-                />
-              ))}
+          {/* clientes — anclados al fondo de la primera pantalla */}
+          <Reveal delay={0.15}>
+            <div className="mt-12 border-t border-white/[0.08] pt-7 sm:pt-8">
+              <p className="mb-5 text-xs uppercase tracking-wider text-muted">
+                {h.logosLabel}
+              </p>
+              <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-5 sm:justify-start sm:gap-x-10 sm:gap-y-6">
+                {clientLogos.map((logo) => (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    key={logo.alt}
+                    src={logo.src}
+                    alt={logo.alt}
+                    className={`${logo.h} w-auto object-contain opacity-60 transition-opacity duration-300 hover:opacity-100`}
+                    loading="lazy"
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
 
         {/* métricas — franja única compacta, sin tarjetas */}
         <Reveal delay={0.2}>
