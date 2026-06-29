@@ -25,8 +25,13 @@ const config: Config = {
         "foreground-muted": "#a3a3a3",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["'Space Grotesk'", "Inter", "system-ui", "sans-serif"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: [
+          "var(--font-space-grotesk)",
+          "var(--font-inter)",
+          "system-ui",
+          "sans-serif",
+        ],
       },
       boxShadow: {
         glow: "0 0 50px -12px rgba(232,255,0,0.5)",
