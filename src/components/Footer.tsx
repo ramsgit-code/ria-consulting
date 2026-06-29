@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
 import { useLang } from "@/components/LanguageProvider";
+
+const EMAIL = "ramiroperez12@hotmail.com";
 
 export function Footer() {
   const { c } = useLang();
@@ -24,6 +26,15 @@ export function Footer() {
               {c.footer.cta}
               <ArrowUpRight size={16} />
             </Link>
+            <div className="mt-6">
+              <a
+                href={`mailto:${EMAIL}`}
+                className="inline-flex items-center gap-2 text-sm text-foreground-muted transition-colors hover:text-accent"
+              >
+                <Mail size={15} className="text-accent" />
+                {EMAIL}
+              </a>
+            </div>
           </div>
         </div>
 
