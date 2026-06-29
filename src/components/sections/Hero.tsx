@@ -63,7 +63,7 @@ export function Hero() {
 
           {/* clientes — anclados al fondo de la primera pantalla */}
           <Reveal delay={0.16}>
-            <div className="border-t border-white/[0.08] pt-7 sm:pt-8">
+            <div className="mt-10 border-t border-white/[0.08] pt-7 sm:mt-14 sm:pt-8">
               <p className="mb-5 text-xs uppercase tracking-wider text-muted">
                 {h.logosLabel}
               </p>
