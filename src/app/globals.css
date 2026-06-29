@@ -81,11 +81,11 @@ body {
 
   /* ---------- Layout ---------- */
   .section {
-    @apply mx-auto max-w-3xl px-6 py-20 md:py-24;
+    @apply mx-auto max-w-3xl px-5 py-16 sm:px-6 sm:py-20 md:py-24;
   }
 
   .section-wide {
-    @apply mx-auto max-w-5xl px-6 py-20 md:py-24;
+    @apply mx-auto max-w-5xl px-5 py-16 sm:px-6 sm:py-20 md:py-24;
   }
 
   /* ---------- Eyebrow / tag como pill ---------- */

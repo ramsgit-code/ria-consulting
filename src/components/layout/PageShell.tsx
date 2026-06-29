@@ -22,9 +22,9 @@ export function PageShell({
   const widthClass = wide ? "section-wide" : "section";
 
   return (
-    <div className="relative pt-36 md:pt-40">
+    <div className="relative pt-28 sm:pt-32 md:pt-40">
       {/* glow superior del header */}
-      <div className="pointer-events-none absolute left-1/2 top-16 h-60 w-[34rem] -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-16 h-60 w-[34rem] max-w-full -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]" />
 
       <header className={`${widthClass} relative !pb-0`}>
         <Reveal>

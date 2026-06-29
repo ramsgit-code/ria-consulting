@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Bot, LayoutGrid, Workflow, FileText } from "lucide-react";
 import { useLang } from "@/components/LanguageProvider";
 import { LOGOS } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
@@ -12,17 +12,19 @@ const clientLogos = [
   { src: LOGOS.growth4u, alt: "Growth4U", h: "h-5" },
 ];
 
+const offeringIcons = [Bot, LayoutGrid, Workflow, FileText];
+
 export function Hero() {
   const { c } = useLang();
   const h = c.hero;
 
   return (
-    <section className="relative overflow-hidden pt-36 pb-20 md:pt-44">
-      <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-accent/15 blur-[120px]" />
+    <section className="relative overflow-hidden pt-28 pb-16 sm:pt-36 md:pt-44 md:pb-20">
+      <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] max-w-full -translate-x-1/2 rounded-full bg-accent/15 blur-[120px]" />
 
       <div className="section-wide relative !py-0">
         <Reveal>
-          <h1 className="max-w-3xl text-balance font-display text-5xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-7xl">
+          <h1 className="max-w-3xl text-balance font-display text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl sm:leading-[1.05] md:text-7xl">
             {h.titlePre}
             <span className="gradient-text">{h.titleHighlight}</span>
             {h.titlePost}
@@ -69,33 +71,41 @@ export function Hero() {
           </div>
         </Reveal>
 
-        {/* qué construyo */}
+        {/* qué construyo — bento visual */}
         <Reveal delay={0.18}>
-          <div className="mt-14">
-            <p className="mb-3 text-xs uppercase tracking-wider text-muted">
+          <div className="mt-16">
+            <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
               {h.offeringTitle}
-            </p>
-            <ul className="flex flex-wrap gap-2.5">
-              {h.offering.map((o) => (
-                <li
-                  key={o}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-sm text-foreground-muted backdrop-blur-md"
-                >
-                  <Check size={13} className="text-accent" />
-                  {o}
-                </li>
-              ))}
-            </ul>
+            </h2>
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+              {h.offering.map((o, i) => {
+                const Icon = offeringIcons[i % offeringIcons.length];
+                return (
+                  <div
+                    key={o}
+                    className="card group relative overflow-hidden !p-5 transition-transform duration-300 sm:!p-6 sm:hover:-translate-y-1"
+                  >
+                    <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-accent/10 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-accent/25 bg-accent/[0.08] text-accent transition-colors group-hover:border-accent/50">
+                      <Icon size={22} />
+                    </div>
+                    <p className="text-[15px] font-medium leading-snug text-foreground">
+                      {o}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </Reveal>
 
         {/* métricas */}
         <Reveal delay={0.22}>
-          <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
             {c.metrics.map((s) => (
               <div
                 key={s.label}
-                className="card !p-5 transition-transform duration-300 hover:-translate-y-1"
+                className="card !p-5 transition-transform duration-300 sm:hover:-translate-y-1"
               >
                 <p className="font-display text-3xl font-semibold tracking-tight text-foreground">
                   {s.value}
