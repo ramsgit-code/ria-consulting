@@ -7,9 +7,9 @@ import { LOGOS } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
 
 const clientLogos = [
-  { src: LOGOS.hospitalCapilar, alt: "Hospital Capilar", h: "h-9" },
-  { src: LOGOS.eventosBarcelona, alt: "EB Eventos Barcelona", h: "h-9" },
-  { src: LOGOS.growth4u, alt: "Growth4U", h: "h-5" },
+  { src: LOGOS.hospitalCapilar, alt: "Hospital Capilar", h: "h-6 sm:h-9" },
+  { src: LOGOS.eventosBarcelona, alt: "EB Eventos Barcelona", h: "h-6 sm:h-9" },
+  { src: LOGOS.growth4u, alt: "Growth4U", h: "h-3.5 sm:h-5" },
 ];
 
 const offeringIcons = [Bot, LayoutGrid, Workflow, FileText];
@@ -52,11 +52,11 @@ export function Hero() {
 
         {/* clientes */}
         <Reveal delay={0.15}>
-          <div className="mt-14 border-t border-white/[0.08] pt-8">
+          <div className="mt-12 border-t border-white/[0.08] pt-7 sm:mt-14 sm:pt-8">
             <p className="mb-5 text-xs uppercase tracking-wider text-muted">
               {h.logosLabel}
             </p>
-            <div className="flex flex-wrap items-center gap-x-10 gap-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-5 sm:justify-start sm:gap-x-10 sm:gap-y-6">
               {clientLogos.map((logo) => (
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img
@@ -71,9 +71,25 @@ export function Hero() {
           </div>
         </Reveal>
 
-        {/* qué construyo — lista ligera con iconos */}
-        <Reveal delay={0.18}>
-          <div className="mt-16">
+        {/* métricas — franja única compacta, sin tarjetas */}
+        <Reveal delay={0.2}>
+          <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-white/[0.08] pt-7 sm:mt-12 sm:grid-cols-4 sm:gap-y-8 sm:divide-x sm:divide-white/[0.08] sm:pt-8">
+            {c.metrics.map((s) => (
+              <div key={s.label} className="sm:px-6 sm:first:pl-0 sm:last:pr-0">
+                <p className="font-display text-2xl font-semibold tracking-tight text-accent sm:text-3xl">
+                  {s.value}
+                </p>
+                <p className="mt-1 text-sm leading-snug text-foreground-muted">
+                  {s.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        {/* qué construyo — más abajo, para que no se vea de primeras */}
+        <Reveal delay={0.24}>
+          <div className="mt-20 sm:mt-24">
             <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
               {h.offeringTitle}
             </h2>
@@ -95,22 +111,6 @@ export function Hero() {
                 );
               })}
             </ul>
-          </div>
-        </Reveal>
-
-        {/* métricas — franja única, sin tarjetas */}
-        <Reveal delay={0.22}>
-          <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-white/[0.08] pt-8 sm:grid-cols-4 sm:divide-x sm:divide-white/[0.08]">
-            {c.metrics.map((s) => (
-              <div key={s.label} className="sm:px-6 sm:first:pl-0 sm:last:pr-0">
-                <p className="font-display text-3xl font-semibold tracking-tight text-accent">
-                  {s.value}
-                </p>
-                <p className="mt-1 text-sm leading-snug text-foreground-muted">
-                  {s.label}
-                </p>
-              </div>
-            ))}
           </div>
         </Reveal>
       </div>
