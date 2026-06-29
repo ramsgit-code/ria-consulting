@@ -16,7 +16,9 @@ export function Footer() {
         <div className="glass relative overflow-hidden rounded-3xl px-6 py-10 text-center md:px-10 md:py-14">
           <div className="pointer-events-none absolute left-1/2 top-0 h-40 w-[26rem] -translate-x-1/2 rounded-full bg-accent/12 blur-[100px]" />
           <div className="relative">
-            <p className="font-display text-xl font-semibold tracking-tight text-foreground">
+            <p className="flex items-center justify-center gap-2.5 font-display text-xl font-semibold tracking-tight text-foreground">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logos/ria-mark.png" alt="RIA" className="h-6 w-auto" />
               RIA Consulting<span className="text-accent">.</span>
             </p>
             <p className="mx-auto mt-2 max-w-sm text-sm text-foreground-muted">

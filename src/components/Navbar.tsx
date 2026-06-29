@@ -33,11 +33,16 @@ export function Navbar() {
             : "border border-transparent bg-transparent"
         }`}
       >
-        <Link
-          href="/"
-          className="font-display text-sm font-semibold tracking-tight text-foreground"
-        >
-          RIA Consulting<span className="text-accent">.</span>
+        <Link href="/" className="flex items-center gap-2.5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logos/ria-mark.png"
+            alt="RIA"
+            className="h-4 w-auto sm:h-5"
+          />
+          <span className="font-display text-sm font-semibold tracking-tight text-foreground">
+            RIA Consulting<span className="text-accent">.</span>
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
