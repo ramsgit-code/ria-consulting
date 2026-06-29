@@ -5,6 +5,7 @@ import { ArrowRight, Bot, LayoutGrid, Workflow, FileText } from "lucide-react";
 import { useLang } from "@/components/LanguageProvider";
 import { LOGOS } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
+import { HeroVisual } from "@/components/sections/HeroVisual";
 
 const clientLogos = [
   { src: LOGOS.hospitalCapilar, alt: "Hospital Capilar", h: "h-6 sm:h-9" },
@@ -23,40 +24,46 @@ export function Hero() {
       <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] max-w-full -translate-x-1/2 rounded-full bg-accent/15 blur-[120px]" />
 
       <div className="section-wide relative !py-0">
-        {/* primera pantalla: titular + clientes (clientes anclados abajo) */}
-        <div className="flex min-h-[calc(100svh-8rem)] flex-col justify-between sm:min-h-[calc(100svh-9rem)] md:min-h-[calc(100svh-11rem)]">
-          <div>
-            <Reveal>
-              <h1 className="max-w-3xl text-balance font-display text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl sm:leading-[1.05] md:text-7xl">
-                {h.titlePre}
-                <span className="gradient-text">{h.titleHighlight}</span>
-                {h.titlePost}
-              </h1>
-            </Reveal>
+        {/* primera pantalla: titular + visual (rellena) + clientes (abajo) */}
+        <div className="flex min-h-[calc(100svh-7rem)] flex-col sm:min-h-[calc(100svh-8rem)] md:min-h-[calc(100svh-10rem)]">
+          <div className="flex flex-1 flex-col justify-center gap-10 lg:grid lg:grid-cols-2 lg:items-center lg:gap-14">
+            <div>
+              <Reveal>
+                <h1 className="max-w-2xl text-balance font-display text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl sm:leading-[1.05] lg:text-6xl">
+                  {h.titlePre}
+                  <span className="gradient-text">{h.titleHighlight}</span>
+                  {h.titlePost}
+                </h1>
+              </Reveal>
 
-            <Reveal delay={0.05}>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground-muted">
-                {h.subtitle}
-              </p>
-            </Reveal>
+              <Reveal delay={0.05}>
+                <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground-muted">
+                  {h.subtitle}
+                </p>
+              </Reveal>
 
-            <Reveal delay={0.1}>
-              <div className="mt-9 flex flex-wrap items-center gap-3">
-                <Link href="/diagnostico" className="btn-primary">
-                  {h.ctaPrimary}
-                  <ArrowRight size={16} />
-                </Link>
-                <Link href="/servicios" className="btn-secondary">
-                  {h.ctaSecondary}
-                </Link>
-              </div>
-              <p className="mt-4 text-sm text-muted">{h.note}</p>
+              <Reveal delay={0.1}>
+                <div className="mt-9 flex flex-wrap items-center gap-3">
+                  <Link href="/diagnostico" className="btn-primary">
+                    {h.ctaPrimary}
+                    <ArrowRight size={16} />
+                  </Link>
+                  <Link href="/servicios" className="btn-secondary">
+                    {h.ctaSecondary}
+                  </Link>
+                </div>
+                <p className="mt-4 text-sm text-muted">{h.note}</p>
+              </Reveal>
+            </div>
+
+            <Reveal delay={0.12} className="flex justify-center">
+              <HeroVisual />
             </Reveal>
           </div>
 
           {/* clientes — anclados al fondo de la primera pantalla */}
-          <Reveal delay={0.15}>
-            <div className="mt-12 border-t border-white/[0.08] pt-7 sm:pt-8">
+          <Reveal delay={0.16}>
+            <div className="border-t border-white/[0.08] pt-7 sm:pt-8">
               <p className="mb-5 text-xs uppercase tracking-wider text-muted">
                 {h.logosLabel}
               </p>
