@@ -99,8 +99,8 @@ export function Hero() {
           </div>
         </Reveal>
 
-        {/* qué construyo — más abajo, para que no se vea de primeras */}
-        <Reveal delay={0.24}>
+        {/* qué construyo — oculto en móvil (versión light), visible en escritorio */}
+        <Reveal delay={0.24} className="hidden sm:block">
           <div className="mt-20 sm:mt-24">
             <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
               {h.offeringTitle}

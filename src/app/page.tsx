@@ -5,7 +5,10 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Process />
+      {/* pasos: ocultos en móvil (home light), visibles en escritorio */}
+      <div className="hidden sm:block">
+        <Process />
+      </div>
     </>
   );
 }
