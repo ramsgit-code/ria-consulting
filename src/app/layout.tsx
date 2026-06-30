@@ -16,15 +16,20 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
+const SITE_URL = "https://ria-consulting.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "RIA Consulting — Automatización Comercial & CRM",
+    default: "RIA Consulting — Automatización Comercial con IA & CRM",
     template: "%s | RIA Consulting",
   },
   description:
-    "Diseño sistemas de captación, cualificación y cierre de leads para negocios que quieren vender más sin trabajar más. Especialista en Go High Level, automatización de WhatsApp y propuestas automáticas.",
+    "Capta, cualifica y cierra clientes en automático con IA. Sistemas de captación, cualificación y propuestas en Go High Level: WhatsApp, Telegram, correo y CRM conectados.",
   keywords: [
     "automatización comercial",
+    "automatización con IA",
+    "agentes de IA ventas",
     "crm gohighlevel",
     "lead qualification system",
     "propuestas automáticas",
@@ -35,8 +40,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_ES",
     alternateLocale: "en_US",
-    siteName: "RIA Consulting — Automatización Comercial",
+    url: SITE_URL,
+    siteName: "RIA Consulting",
+    title: "RIA Consulting — Automatización Comercial con IA",
+    description:
+      "Capta, cualifica y cierra clientes en automático con IA. Especialista en Go High Level.",
+    images: [{ url: "/og", width: 1200, height: 630, alt: "RIA Consulting" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "RIA Consulting — Automatización Comercial con IA",
+    description:
+      "Capta, cualifica y cierra clientes en automático con IA. Especialista en Go High Level.",
+    images: ["/og"],
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({

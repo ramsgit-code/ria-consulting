@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { renderMarkdown } from "@/lib/markdown";
+import { JsonLd } from "@/components/JsonLd";
+
+const SITE_URL = "https://ria-consulting.vercel.app";
 
 export const revalidate = 60;
 
@@ -35,15 +38,49 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const post = await getPost(params.slug);
   if (!post) return { title: "Artículo no encontrado" };
-  return { title: post.title, description: post.description };
+  const ogImg = `/og?title=${encodeURIComponent(post.title)}&tag=Blog`;
+  return {
+    title: post.title,
+    description: post.description,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.description,
+      url: `${SITE_URL}/blog/${post.slug}`,
+      images: [{ url: ogImg, width: 1200, height: 630 }],
+      publishedTime: post.publishedAt?.toISOString(),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [ogImg],
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug);
   if (!post) notFound();
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    image: `${SITE_URL}/og?title=${encodeURIComponent(post.title)}&tag=Blog`,
+    datePublished: post.publishedAt?.toISOString(),
+    dateModified: post.updatedAt.toISOString(),
+    author: { "@type": "Person", name: "Ramiro Pérez" },
+    publisher: { "@type": "Organization", name: "RIA Consulting" },
+    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+    inLanguage: "es-ES",
+  };
+
   return (
     <div className="pt-36 pb-16 md:pt-40">
+      <JsonLd data={articleJsonLd} />
       <div className="section">
         <Link href="/blog" className="text-sm text-muted hover:text-foreground">
           ← Blog

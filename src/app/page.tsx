@@ -1,9 +1,41 @@
 import { Hero } from "@/components/sections/Hero";
 import { Process } from "@/components/sections/Process";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { JsonLd } from "@/components/JsonLd";
 import { prisma } from "@/lib/prisma";
 
 export const revalidate = 60;
+
+const SITE_URL = "https://ria-consulting.vercel.app";
+
+const businessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "RIA Consulting",
+  url: SITE_URL,
+  image: `${SITE_URL}/og`,
+  description:
+    "Automatización comercial con IA: captación, cualificación y cierre de clientes en Go High Level (WhatsApp, Telegram, correo y CRM).",
+  email: "ramiroperez12@hotmail.com",
+  areaServed: "ES",
+  knowsAbout: [
+    "Automatización comercial",
+    "Inteligencia artificial",
+    "Go High Level",
+    "CRM",
+    "Lead qualification",
+    "Agentes de IA",
+  ],
+  founder: { "@type": "Person", name: "Ramiro Pérez" },
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "RIA Consulting",
+  url: SITE_URL,
+  inLanguage: "es-ES",
+};
 
 async function getTestimonials() {
   try {
@@ -23,6 +55,8 @@ export default async function Home() {
 
   return (
     <>
+      <JsonLd data={businessJsonLd} />
+      <JsonLd data={websiteJsonLd} />
       <Hero />
       <Testimonials items={testimonials} />
       {/* pasos: ocultos en móvil (home light), visibles en escritorio */}
