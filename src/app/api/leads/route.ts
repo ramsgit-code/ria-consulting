@@ -57,7 +57,6 @@ export async function POST(req: NextRequest) {
 
   let ghlSynced = false;
   let ghlContactId: string | null = null;
-  let ghlDebug: string | null = null;
 
   try {
     const [firstName, ...rest] = data.nombre.split(" ");
@@ -87,9 +86,6 @@ export async function POST(req: NextRequest) {
     }
   } catch (err) {
     console.error("[leads API] GHL sync failed", err);
-    ghlDebug = `keySet=${!!process.env.GHL_API_KEY} locSet=${!!process.env.GHL_LOCATION_ID} pipeSet=${!!process.env.GHL_PIPELINE_ID} stageSet=${!!process.env.GHL_STAGE_NUEVO_LEAD} | ${String(
-      err
-    ).slice(0, 400)}`;
   }
 
   if (submissionId) {
@@ -109,6 +105,5 @@ export async function POST(req: NextRequest) {
     score,
     tier,
     ghlSynced,
-    ghlDebug,
   });
 }
