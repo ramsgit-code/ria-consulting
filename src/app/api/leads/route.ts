@@ -71,7 +71,6 @@ export async function POST(req: NextRequest) {
       website: data.web,
       source: data.como_conociste,
       tags,
-      customField: buildCustomFields(enriched),
     });
 
     if (contact?.contact?.id) {
@@ -82,6 +81,7 @@ export async function POST(req: NextRequest) {
         pipelineStageId: process.env.GHL_STAGE_NUEVO_LEAD!,
         contactId: contact.contact.id,
         status: "open",
+        customFields: buildCustomFields(enriched),
       });
       ghlSynced = true;
     }
