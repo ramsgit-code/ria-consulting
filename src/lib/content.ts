@@ -46,10 +46,10 @@ export const content = {
     },
 
     metrics: [
-      { value: "100%", label: "del proceso comercial automatizado" },
-      { value: "1 min", label: "en elaborar una propuesta (antes, 4 días)" },
-      { value: "−40%", label: "tiempo en tareas comerciales manuales" },
-      { value: "24/7", label: "captación y seguimiento sin descanso" },
+      { value: "1 min", label: "en enviar una propuesta (antes, 4 días)" },
+      { value: "< 5 min", label: "en responder a cada lead nuevo" },
+      { value: "24/7", label: "captación y seguimiento automático" },
+      { value: "100%", label: "del embudo medido: conversión, citas y ventas" },
     ],
 
     cases: {
@@ -314,10 +314,10 @@ export const content = {
     },
 
     metrics: [
-      { value: "100%", label: "of the sales process automated" },
-      { value: "1 min", label: "to build a proposal (was 4 days)" },
-      { value: "−40%", label: "time spent on manual sales tasks" },
-      { value: "24/7", label: "capture and follow-up, non-stop" },
+      { value: "1 min", label: "to send a proposal (was 4 days)" },
+      { value: "< 5 min", label: "to respond to every new lead" },
+      { value: "24/7", label: "automated capture and follow-up" },
+      { value: "100%", label: "of the funnel measured: conversion, bookings, sales" },
     ],
 
     cases: {
