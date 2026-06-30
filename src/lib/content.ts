@@ -27,9 +27,9 @@ export const content = {
 
     hero: {
       eyebrow: "Go High Level · Automatización comercial con IA",
-      titlePre: "Vende más sin ",
-      titleHighlight: "perseguir leads",
-      titlePost: ".",
+      titlePre: "Capta, cualifica y cierra clientes. ",
+      titleHighlight: "En automático con IA.",
+      titlePost: "",
       subtitle:
         "Diseño tu sistema de captación, cualificación y cierre en Go High Level, potenciado con IA.",
       ctaPrimary: "Solicitar diagnóstico gratuito",
@@ -295,9 +295,9 @@ export const content = {
 
     hero: {
       eyebrow: "Go High Level · AI-powered sales automation",
-      titlePre: "Sell more without ",
-      titleHighlight: "chasing leads",
-      titlePost: ".",
+      titlePre: "Capture, qualify and close clients. ",
+      titleHighlight: "On autopilot with AI.",
+      titlePost: "",
       subtitle:
         "I design your lead capture, qualification and closing system on Go High Level, powered by AI.",
       ctaPrimary: "Request a free diagnosis",
