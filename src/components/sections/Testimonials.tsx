@@ -11,6 +11,7 @@ export type TestimonialItem = {
   company: string | null;
   role: string | null;
   quote: string;
+  imageUrl: string | null;
 };
 
 export function Testimonials({ items }: { items: TestimonialItem[] }) {
@@ -35,13 +36,27 @@ export function Testimonials({ items }: { items: TestimonialItem[] }) {
                 <blockquote className="mt-4 flex-1 text-[15px] leading-relaxed text-foreground">
                   “{item.quote}”
                 </blockquote>
-                <figcaption className="mt-5 border-t border-white/[0.08] pt-4">
-                  <p className="font-display text-sm font-semibold text-foreground">
-                    {item.name}
-                  </p>
-                  <p className="text-xs text-foreground-muted">
-                    {[item.role, item.company].filter(Boolean).join(" · ")}
-                  </p>
+                <figcaption className="mt-5 flex items-center gap-3 border-t border-white/[0.08] pt-4">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/[0.04] text-sm font-semibold text-accent">
+                    {item.imageUrl ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        src={item.imageUrl}
+                        alt={item.name}
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      item.name.charAt(0)
+                    )}
+                  </span>
+                  <span>
+                    <span className="block font-display text-sm font-semibold text-foreground">
+                      {item.name}
+                    </span>
+                    <span className="block text-xs text-foreground-muted">
+                      {[item.role, item.company].filter(Boolean).join(" · ")}
+                    </span>
+                  </span>
                 </figcaption>
               </figure>
             </Reveal>

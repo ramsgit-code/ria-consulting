@@ -8,6 +8,7 @@ import {
   FileText,
   Users,
   BarChart3,
+  Quote,
   LogOut,
   ExternalLink,
 } from "lucide-react";
@@ -16,6 +17,7 @@ const links = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/blog", label: "Blog", icon: FileText },
   { href: "/admin/leads", label: "Leads", icon: Users },
+  { href: "/admin/testimonios", label: "Testimonios", icon: Quote },
   { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
 ];
 

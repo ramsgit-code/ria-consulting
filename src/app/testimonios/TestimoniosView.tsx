@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { Quote, ArrowRight, Loader2, CheckCircle } from "lucide-react";
+import { useState, useRef } from "react";
+import { Quote, ArrowRight, Loader2, CheckCircle, Upload, X } from "lucide-react";
 import { useLang } from "@/components/LanguageProvider";
 import { PageShell } from "@/components/layout/PageShell";
 import { Reveal } from "@/components/Reveal";
+import { fileToAvatar } from "@/lib/avatar";
 import type { TestimonialItem } from "@/components/sections/Testimonials";
 
 const inputClass =
@@ -15,7 +16,18 @@ export function TestimoniosView({ items }: { items: TestimonialItem[] }) {
   const t = c.testimonials;
 
   const [form, setForm] = useState({ name: "", company: "", role: "", quote: "" });
+  const [image, setImage] = useState<string | null>(null);
   const [state, setState] = useState<"idle" | "loading" | "ok" | "error">("idle");
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const onFile = async (f: File | undefined) => {
+    if (!f) return;
+    try {
+      setImage(await fileToAvatar(f));
+    } catch {
+      /* ignore */
+    }
+  };
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,7 +36,7 @@ export function TestimoniosView({ items }: { items: TestimonialItem[] }) {
       const res = await fetch("/api/testimonials", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, imageUrl: image }),
       });
       setState(res.ok ? "ok" : "error");
     } catch {
@@ -44,13 +56,27 @@ export function TestimoniosView({ items }: { items: TestimonialItem[] }) {
                 <blockquote className="mt-3 flex-1 text-[15px] leading-relaxed text-foreground">
                   “{item.quote}”
                 </blockquote>
-                <figcaption className="mt-5 border-t border-white/[0.08] pt-4">
-                  <p className="font-display text-sm font-semibold text-foreground">
-                    {item.name}
-                  </p>
-                  <p className="text-xs text-foreground-muted">
-                    {[item.role, item.company].filter(Boolean).join(" · ")}
-                  </p>
+                <figcaption className="mt-5 flex items-center gap-3 border-t border-white/[0.08] pt-4">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/[0.04] text-sm font-semibold text-accent">
+                    {item.imageUrl ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        src={item.imageUrl}
+                        alt={item.name}
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      item.name.charAt(0)
+                    )}
+                  </span>
+                  <span>
+                    <span className="block font-display text-sm font-semibold text-foreground">
+                      {item.name}
+                    </span>
+                    <span className="block text-xs text-foreground-muted">
+                      {[item.role, item.company].filter(Boolean).join(" · ")}
+                    </span>
+                  </span>
                 </figcaption>
               </figure>
             </Reveal>
@@ -74,6 +100,39 @@ export function TestimoniosView({ items }: { items: TestimonialItem[] }) {
             </div>
           ) : (
             <form onSubmit={onSubmit} className="mt-5 flex flex-col gap-4">
+              {/* foto opcional */}
+              <div className="flex items-center gap-3">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-background text-muted">
+                  {image ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img src={image} alt="" className="h-full w-full object-cover" />
+                  ) : (
+                    <Upload size={16} />
+                  )}
+                </div>
+                <div className="flex flex-col gap-1">
+                  <input
+                    ref={fileRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => onFile(e.target.files?.[0])}
+                    className="text-xs text-muted file:mr-2 file:rounded file:border-0 file:bg-border file:px-2 file:py-1 file:text-foreground"
+                  />
+                  {image && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setImage(null);
+                        if (fileRef.current) fileRef.current.value = "";
+                      }}
+                      className="flex w-fit items-center gap-1 text-xs text-muted hover:text-foreground"
+                    >
+                      <X size={11} /> quitar foto
+                    </button>
+                  )}
+                </div>
+              </div>
+
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <label className="flex flex-col gap-1.5">
                   <span className="text-sm font-medium text-foreground-muted">

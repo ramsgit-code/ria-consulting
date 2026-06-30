@@ -11,7 +11,7 @@ async function getTestimonials() {
       where: { approved: true },
       orderBy: { createdAt: "desc" },
       take: 6,
-      select: { id: true, name: true, company: true, role: true, quote: true },
+      select: { id: true, name: true, company: true, role: true, quote: true, imageUrl: true },
     });
   } catch {
     return [];
